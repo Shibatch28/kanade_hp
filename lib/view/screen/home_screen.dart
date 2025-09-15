@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import "package:kanade_hp/view/widget/main_visual.dart";
+import "package:kanade_hp/view/widget/message.dart";
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -33,6 +36,18 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const MainVisual(),
+            const WelcomeMessage(
+              title: 'ようこそ',
+              message:
+                  'この度は、ピアニスト近藤奏の公式ウェブサイトにアクセスいただき、誠にありがとうございます。\nここでは演奏会の情報や活動の様子、そして音楽に対する想いなどを発信していきます。どうぞごゆっくりご覧ください。',
+            ),
+          ],
+        ),
       ),
     );
   }
