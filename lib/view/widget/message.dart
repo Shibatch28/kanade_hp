@@ -1,4 +1,3 @@
-// lib/views/widgets/welcome_message.dart
 import 'package:flutter/material.dart';
 
 class WelcomeMessage extends StatelessWidget {
@@ -10,6 +9,9 @@ class WelcomeMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // テーマから情報を取得
+    final theme = Theme.of(context);
+
     return Container(
       // セクション全体のデザイン
       width: double.infinity,
@@ -26,22 +28,32 @@ class WelcomeMessage extends StatelessWidget {
               Text(
                 title,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white, // タイトルを白文字に変更
-                ),
+                style:
+                    theme.textTheme.headlineMedium?.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ) ??
+                    const TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
               ),
               const SizedBox(height: 24), // タイトルと本文の間の余白
               // メッセージ本文
               Text(
                 message,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.white70, // 本文を少し透明度のある白文字に変更
-                  height: 1.8, // 行間を少し広げて読みやすくする
-                ),
+                style:
+                    theme.textTheme.bodyLarge?.copyWith(
+                      color: Colors.white70,
+                      height: 1.8,
+                    ) ??
+                    const TextStyle(
+                      fontSize: 16,
+                      color: Colors.white70,
+                      height: 1.8,
+                    ),
               ),
             ],
           ),

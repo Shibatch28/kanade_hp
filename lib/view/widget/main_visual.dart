@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:kanade_hp/cubit/main_visual_cubit.dart';
 import 'package:kanade_hp/state/main_visual_state.dart';
 
@@ -13,13 +14,6 @@ class MainVisual extends StatelessWidget {
       child: const _MainVisualContent(),
     );
   }
-}
-
-class _MainVisualContent extends StatefulWidget {
-  const _MainVisualContent();
-
-  @override
-  State<_MainVisualContent> createState() => _MainVisualContentState();
 }
 
 class _MainVisualContentState extends State<_MainVisualContent> {
@@ -105,6 +99,41 @@ class _MainVisualContentState extends State<_MainVisualContent> {
                 },
               ),
             ),
+
+            // 固定テキスト（画像の上に重ねて配置）
+            Center(
+              child: Text(
+                '近藤 奏 Official Website',
+                style:
+                    Theme.of(context).textTheme.headlineLarge?.copyWith(
+                      fontSize: 48,
+                      color: Colors.white.withValues(alpha: 0.8),
+                      letterSpacing: 4.0,
+                      shadows: [
+                        Shadow(
+                          offset: const Offset(0, 2),
+                          blurRadius: 4,
+                          color: Colors.black.withValues(alpha: 0.5),
+                        ),
+                      ],
+                    ) ??
+                    GoogleFonts.notoSerifJp(
+                      fontSize: 48,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white.withValues(alpha: 0.8),
+                      letterSpacing: 4.0,
+                      shadows: [
+                        Shadow(
+                          offset: const Offset(0, 2),
+                          blurRadius: 4,
+                          color: Colors.black.withValues(alpha: 0.5),
+                        ),
+                      ],
+                    ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+
             // 左矢印ボタン
             if (state.imagePaths.length > 1)
               Positioned(
@@ -155,7 +184,7 @@ class _MainVisualContentState extends State<_MainVisualContent> {
                         color:
                             index == state.currentIndex
                                 ? Colors.white
-                                : Colors.white.withValues(alpha: 0.5),
+                                : Colors.white.withOpacity(0.5),
                       ),
                     ),
                   ),
@@ -166,4 +195,11 @@ class _MainVisualContentState extends State<_MainVisualContent> {
       },
     );
   }
+}
+
+class _MainVisualContent extends StatefulWidget {
+  const _MainVisualContent();
+
+  @override
+  State<_MainVisualContent> createState() => _MainVisualContentState();
 }
