@@ -103,7 +103,7 @@ class _MainVisualContentState extends State<_MainVisualContent> {
             // 固定テキスト（画像の上に重ねて配置）
             Center(
               child: Text(
-                '近藤 奏 Official Website',
+                '近藤 奏 Official',
                 style:
                     Theme.of(context).textTheme.headlineLarge?.copyWith(
                       fontSize: 48,
