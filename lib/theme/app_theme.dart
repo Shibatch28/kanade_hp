@@ -23,8 +23,6 @@ class AppTheme {
         surface: primaryWhite,
         onSurface: darkGrey,
         onPrimary: primaryWhite,
-        background: primaryWhite,
-        onBackground: darkGrey,
       ),
 
       textTheme: textTheme.copyWith(

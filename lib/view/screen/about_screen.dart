@@ -1,13 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kanade_hp/view/widget/chronology_item.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    return Column(
+      children: [
+        // プロフィールセクション
+        _buildProfileSection(),
+
+        // 年表セクション
+        _buildChronologySection(),
+      ],
+    );
+  }
+
+  Widget _buildProfileSection() {
     return Container(
-      color: const Color(0xFFFAFAFA),
+      color: const Color(0xFFFAFAFA), // 既存テーマに合わせる
       padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 80),
       child: Center(
         child: ConstrainedBox(
@@ -23,7 +36,7 @@ class AboutScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
+                          color: Colors.black.withValues(alpha: 0.1),
                           blurRadius: 20,
                           offset: const Offset(0, 10),
                         ),
@@ -60,7 +73,7 @@ class AboutScreen extends StatelessWidget {
 
                       const SizedBox(height: 50),
 
-                      // プロフィール本文（Expandedを削除）
+                      // プロフィール本文
                       Text(
                         '長野県長野市出身。長野日本大学高等学校卒。ピアノを青木かおり、小山香織、後藤友香理の各氏に師事。静岡アンサンブル同好会代表。静岡大学教育学部音楽教育専修4年。サンマルクカフェ静岡伊勢丹前店専属ピアニスト。\n\n'
                         '2017年 第27回日本クラシック音楽コンクール 全国大会第5位。\n\n'
@@ -74,7 +87,7 @@ class AboutScreen extends StatelessWidget {
                         style: GoogleFonts.notoSerifJp(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
-                          color: const Color(0xFF3A3A1A),
+                          color: const Color(0xFF3A3A3A), // 既存テーマの色に統一
                           letterSpacing: 1.0,
                           height: 2.2,
                         ),
@@ -86,6 +99,122 @@ class AboutScreen extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildChronologySection() {
+    return Container(
+      color: const Color(0xFFFAFAFA),
+      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 60),
+      child: Column(
+        children: [
+          // セクションタイトル
+          Text(
+            '足跡',
+            style: GoogleFonts.notoSerifJp(
+              fontSize: 36,
+              fontWeight: FontWeight.bold,
+              color: const Color(0xFF1A1A1A),
+              letterSpacing: 2.0,
+            ),
+          ),
+
+          const SizedBox(height: 60),
+
+          // 年表アイテム
+          const ChronologyItem(
+            year: '2002',
+            month: '10',
+            day: '31',
+            title: '長野県長野市?で誕生',
+            description: 'なんかいい感じのメッセージ',
+            imagePath: 'assets/chronology/20021031.jpg',
+            isLeft: true,
+            showYear: true,
+          ),
+
+          const ChronologyItem(
+            year: '2017',
+            month: '',
+            day: '',
+            title: '第27回日本クラシック音楽コンクール',
+            description: '全国大会第5位を受賞',
+            isLeft: false,
+            showYear: true,
+          ),
+
+          const ChronologyItem(
+            year: '2021',
+            month: '',
+            day: '',
+            title: '第15回ベーテン音楽コンクール',
+            description: '全国大会第1位を受賞。翌年に開催されたガラコンサートに出演',
+            isLeft: true,
+            showYear: true,
+          ),
+
+          const ChronologyItem(
+            year: '2022',
+            month: '',
+            day: '',
+            title: '静岡大学学長表彰',
+            description: '音楽活動が評価され、学長表彰を受賞',
+            isLeft: false,
+            showYear: true,
+          ),
+
+          const ChronologyItem(
+            year: '2023',
+            month: '2',
+            day: '11',
+            title: 'ジョイントピアノリサイタル',
+            description:
+                '静岡大学教育学部音楽科有志企画Vol.1「近藤奏 上中友貴 ジョイントピアノリサイタル」を江崎ホールにて開催',
+            isLeft: true,
+            showYear: true,
+          ),
+
+          const ChronologyItem(
+            year: '2023',
+            month: '7',
+            day: '1',
+            title: '静岡大学管弦楽団 ソリスト',
+            description: '第109回定期演奏会にてソリストを務め、グリーグ/ピアノ協奏曲イ短調Op.16を演奏',
+            isLeft: false,
+            showYear: false, // 同じ年なので非表示
+          ),
+
+          const ChronologyItem(
+            year: '2023',
+            month: '8',
+            day: '8',
+            title: '「クラシックでみる幻想」',
+            description: '静岡大学教育学部音楽科有志企画Vol.2をしずぎんホールユーフォニアにて開催',
+            isLeft: true,
+            showYear: false, // 同じ年なので非表示
+          ),
+
+          const ChronologyItem(
+            year: '2023',
+            month: '11',
+            day: '26',
+            title: 'Be Phil オーケストラジャパン',
+            description: 'ベルリン・フィルハーモニー管弦楽団楽団主催公演に出演。東京・サントリーホールにて',
+            isLeft: false,
+            showYear: false, // 同じ年なので非表示
+          ),
+
+          const ChronologyItem(
+            year: '2024',
+            month: '4',
+            day: '6',
+            title: '「音⊃音楽 空気⊃私」',
+            description: '静岡大学教育学部音楽科有志企画Vol.3を静岡音楽館AOIにて開催',
+            isLeft: true,
+            showYear: true,
+          ),
+        ],
       ),
     );
   }

@@ -184,7 +184,7 @@ class _MainVisualContentState extends State<_MainVisualContent> {
                         color:
                             index == state.currentIndex
                                 ? Colors.white
-                                : Colors.white.withOpacity(0.5),
+                                : Colors.white.withValues(alpha: 0.5),
                       ),
                     ),
                   ),
