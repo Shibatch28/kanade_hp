@@ -209,6 +209,8 @@ class _MainVisualContentState extends State<_MainVisualContent> {
 
 class _MainVisualContent extends StatefulWidget {
   final double? height; // 高さパラメータを追加
+  final String? title;
+  final List<String>? imagePaths;
 
   const _MainVisualContent({this.height});
 
