@@ -6,7 +6,7 @@ import 'dart:convert';
 class MainVisualCubit extends Cubit<MainVisualState> {
   MainVisualCubit() : super(const MainVisualState());
 
-  Future<void> loadImages() async {
+  Future<void> loadImages(String directoryPath) async {
     try {
       // assets/main_visual/フォルダから画像ファイルを動的に取得
       final manifestContent = await rootBundle.loadString('AssetManifest.json');
@@ -16,7 +16,7 @@ class MainVisualCubit extends Cubit<MainVisualState> {
 
       final imagePaths =
           manifestMap.keys
-              .where((String key) => key.startsWith('assets/main_visual/'))
+              .where((String key) => key.startsWith('assets/$directoryPath/'))
               .where(
                 (String key) =>
                     key.toLowerCase().endsWith('.png') ||

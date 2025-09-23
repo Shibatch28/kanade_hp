@@ -6,17 +6,21 @@ import 'package:kanade_hp/state/main_visual_state.dart';
 
 class MainVisual extends StatelessWidget {
   final double? height; // 高さを指定可能にする
+  final String title; // タイトルを指定可能にする
+  final String imageDirectory;
 
   const MainVisual({
     super.key,
     this.height, // nullの場合は従来通りの自動計算
+    required this.title,
+    required this.imageDirectory,
   });
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => MainVisualCubit()..loadImages(),
-      child: _MainVisualContent(height: height),
+      create: (context) => MainVisualCubit()..loadImages(imageDirectory),
+      child: _MainVisualContent(height: height, title: title),
     );
   }
 }
@@ -113,7 +117,7 @@ class _MainVisualContentState extends State<_MainVisualContent> {
             // 固定テキスト（画像の上に重ねて配置）
             Center(
               child: Text(
-                '近藤 奏 Official',
+                widget.title!,
                 style:
                     Theme.of(context).textTheme.headlineLarge?.copyWith(
                       fontSize: 48,
@@ -210,9 +214,8 @@ class _MainVisualContentState extends State<_MainVisualContent> {
 class _MainVisualContent extends StatefulWidget {
   final double? height; // 高さパラメータを追加
   final String? title;
-  final List<String>? imagePaths;
 
-  const _MainVisualContent({this.height});
+  const _MainVisualContent({this.height, this.title});
 
   @override
   State<_MainVisualContent> createState() => _MainVisualContentState();
