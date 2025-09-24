@@ -4,7 +4,7 @@ import 'package:kanade_hp/cubit/navigation_cubit.dart';
 import 'package:kanade_hp/state/navigation_state.dart';
 import 'package:kanade_hp/view/screen/home_screen.dart';
 import 'package:kanade_hp/view/screen/about_screen.dart';
-// import 'package:kanade_hp/view/screen/concerts_screen.dart';
+import 'package:kanade_hp/view/screen/concerts_screen.dart';
 // import 'package:kanade_hp/view/screen/gallery_screen.dart';
 // import 'package:kanade_hp/view/screen/contact_screen.dart';
 import 'package:kanade_hp/view/widget/custom_app_bar.dart';
@@ -40,8 +40,8 @@ class MainApp extends StatelessWidget {
         return const HomePage();
       case ScreenType.about:
         return const AboutScreen();
-      // case ScreenType.concerts:
-      //   return const ConcertsScreen();
+      case ScreenType.concerts:
+        return const ConcertsScreen();
       // case ScreenType.gallery:
       //   return const GalleryScreen();
       // case ScreenType.contact:

@@ -65,6 +65,7 @@ flutter:
     - assets/
     - assets/main_visual/
     - assets/chronology/
+    - assets/concerts/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
