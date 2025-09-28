@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       children: [
-        MainVisual(),
+        MainVisual(title: '近藤奏 Official', imageDirectory: 'main_visual'),
         WelcomeMessage(
           title: 'ようこそ',
           message:

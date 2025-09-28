@@ -5,13 +5,22 @@ import 'package:kanade_hp/cubit/main_visual_cubit.dart';
 import 'package:kanade_hp/state/main_visual_state.dart';
 
 class MainVisual extends StatelessWidget {
-  const MainVisual({super.key});
+  final double? height; // 高さを指定可能にする
+  final String title; // タイトルを指定可能にする
+  final String imageDirectory;
+
+  const MainVisual({
+    super.key,
+    this.height, // nullの場合は従来通りの自動計算
+    required this.title,
+    required this.imageDirectory,
+  });
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => MainVisualCubit()..loadImages(),
-      child: const _MainVisualContent(),
+      create: (context) => MainVisualCubit()..loadImages(imageDirectory),
+      child: _MainVisualContent(height: height, title: title),
     );
   }
 }
@@ -33,10 +42,15 @@ class _MainVisualContentState extends State<_MainVisualContent> {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final appBarHeight = AppBar().preferredSize.height;
-    final statusBarHeight = MediaQuery.of(context).padding.top;
-    final availableHeight = screenHeight - appBarHeight - statusBarHeight;
+    // 高さの計算：指定されていれば使用、なければ従来通りの計算
+    final double containerHeight =
+        widget.height ??
+        () {
+          final screenHeight = MediaQuery.of(context).size.height;
+          final appBarHeight = AppBar().preferredSize.height;
+          final statusBarHeight = MediaQuery.of(context).padding.top;
+          return screenHeight - appBarHeight - statusBarHeight;
+        }();
 
     return BlocConsumer<MainVisualCubit, MainVisualState>(
       listener: (context, state) {
@@ -55,14 +69,14 @@ class _MainVisualContentState extends State<_MainVisualContent> {
       builder: (context, state) {
         if (state.isLoading) {
           return SizedBox(
-            height: availableHeight,
+            height: containerHeight,
             child: const Center(child: CircularProgressIndicator()),
           );
         }
 
         if (state.imagePaths.isEmpty) {
           return SizedBox(
-            height: availableHeight,
+            height: containerHeight,
             child: const Center(child: Text('画像が見つかりません')),
           );
         }
@@ -72,7 +86,7 @@ class _MainVisualContentState extends State<_MainVisualContent> {
           children: [
             // PageViewで画像をスクロール可能に
             SizedBox(
-              height: availableHeight,
+              height: containerHeight,
               child: PageView.builder(
                 controller: _pageController,
                 itemCount: state.imagePaths.length,
@@ -86,12 +100,12 @@ class _MainVisualContentState extends State<_MainVisualContent> {
                       Image.asset(
                         state.imagePaths[index],
                         width: double.infinity,
-                        height: availableHeight,
+                        height: containerHeight,
                         fit: BoxFit.cover,
                       ),
                       Container(
                         width: double.infinity,
-                        height: availableHeight,
+                        height: containerHeight,
                         color: Colors.black.withValues(alpha: 0.4),
                       ),
                     ],
@@ -103,7 +117,7 @@ class _MainVisualContentState extends State<_MainVisualContent> {
             // 固定テキスト（画像の上に重ねて配置）
             Center(
               child: Text(
-                '近藤 奏 Official',
+                widget.title!,
                 style:
                     Theme.of(context).textTheme.headlineLarge?.copyWith(
                       fontSize: 48,
@@ -198,7 +212,10 @@ class _MainVisualContentState extends State<_MainVisualContent> {
 }
 
 class _MainVisualContent extends StatefulWidget {
-  const _MainVisualContent();
+  final double? height; // 高さパラメータを追加
+  final String? title;
+
+  const _MainVisualContent({this.height, this.title});
 
   @override
   State<_MainVisualContent> createState() => _MainVisualContentState();
