@@ -66,7 +66,7 @@ class ConcertInfo extends StatelessWidget {
             flex: 2,
             child: Container(
               constraints: const BoxConstraints(
-                maxHeight: 600, // 高さを少し増やす
+                maxWidth: 600, // 幅を少し増やす
               ),
               child: _buildFlyerImage(),
             ),
