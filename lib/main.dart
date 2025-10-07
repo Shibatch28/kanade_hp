@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import "package:flutter_bloc/flutter_bloc.dart";
 import 'package:google_fonts/google_fonts.dart';
+import "package:kanade_hp/router/app_router.dart";
 
 import "view/screen/main_screen.dart";
 import "theme/app_theme.dart";
@@ -19,13 +20,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: '近藤 奏のホームページ',
-      theme: AppTheme.lightTheme,
-      debugShowCheckedModeBanner: false,
-      home: BlocProvider(
-        create: (context) => NavigationCubit(),
-        child: const MainApp(),
+    return BlocProvider(
+      create: (context) => NavigationCubit(),
+      child: MaterialApp.router(
+        title: '近藤奏 Official',
+        theme: AppTheme.lightTheme,
+        routerConfig: AppRouter.router,
+        debugShowCheckedModeBanner: false,
       ),
     );
   }

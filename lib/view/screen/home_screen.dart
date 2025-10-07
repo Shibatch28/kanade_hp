@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import "package:kanade_hp/view/widget/main_visual.dart";
 import "package:kanade_hp/view/widget/message.dart";
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
