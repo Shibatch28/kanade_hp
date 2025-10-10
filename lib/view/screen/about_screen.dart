@@ -127,10 +127,31 @@ class AboutScreen extends StatelessWidget {
             year: '2002',
             month: '10',
             day: '31',
-            title: '長野県長野市?で誕生',
-            description: 'なんかいい感じのメッセージ',
+            title: '多分諏訪の病院で生まれる',
+            description:
+                '産声を聞いた兄はその場で「カエルさんみたい!!」と。\nこのため近藤奏の口はカエルのようなアヒルのような口っぽくなったと言われている。',
             imagePath: 'assets/chronology/20021031.jpg',
             isLeft: true,
+            showYear: true,
+          ),
+
+          const ChronologyItem(
+            year: '小学生くらい',
+            month: '',
+            day: '',
+            title: '野球とかピアノとか水泳とか始める。順序は知らない。',
+            description: '',
+            isLeft: false,
+            showYear: true,
+          ),
+
+          const ChronologyItem(
+            year: '2016',
+            month: '',
+            day: '',
+            title: '三陽中学校で生徒会選挙にて全校生徒の前で\n「この三陽中学校を変えてみせます！」とマイクなしで豪語。',
+            description: '本当に恥ずかしい。結果副会長・文化祭実行委員長当選。',
+            isLeft: false,
             showYear: true,
           ),
 
@@ -138,8 +159,30 @@ class AboutScreen extends StatelessWidget {
             year: '2017',
             month: '',
             day: '',
-            title: '第27回日本クラシック音楽コンクール',
-            description: '全国大会第5位を受賞',
+            title: '大会の決勝でエラーをしてサヨナラ負けをする。',
+            description:
+                '「お前のせいで負けた」と何度も言われたことが結構なトラウマであるが、\nその時にずっと黙って横にいてくれた仲間はまぢでいいやつ。全人類に紹介したいいいやつ。',
+            isLeft: true,
+            showYear: true,
+          ),
+
+          const ChronologyItem(
+            year: '',
+            month: '',
+            day: '',
+            title: '日本クラシック音楽コンクールで第5位入賞。',
+            description: 'この時の演奏はゾーンに入っていた自信がある。',
+            isLeft: false,
+            showYear: false,
+          ),
+
+          const ChronologyItem(
+            year: '2018',
+            month: '',
+            day: '',
+            title: '高校受験を失敗し併願校へ。いろいろ気分もナイーブで気乗りせず、\n野球部に入らずになぜか吹奏楽部に入る。',
+            description:
+                '打楽器をやりたかったが「夏までクラリネットをやって欲しい」と言われ、結果3年間引退までクラリネット。\n昨今このような手口で不足しているパートを埋める団体が増えている。非常に悪質である。',
             isLeft: false,
             showYear: true,
           ),
@@ -148,71 +191,41 @@ class AboutScreen extends StatelessWidget {
             year: '2021',
             month: '',
             day: '',
-            title: '第15回ベーテン音楽コンクール',
-            description: '全国大会第1位を受賞。翌年に開催されたガラコンサートに出演',
+            title: '静岡大学へ入学。',
+            description:
+                '入試ではなぜ静岡大学に入りたかったのか志望動機を雄弁に語ったが、\n結局のところ一人暮らしをしたいからであった。',
             isLeft: true,
             showYear: true,
           ),
 
           const ChronologyItem(
-            year: '2022',
+            year: '',
             month: '',
             day: '',
-            title: '静岡大学学長表彰',
-            description: '音楽活動が評価され、学長表彰を受賞',
-            isLeft: false,
-            showYear: true,
-          ),
-
-          const ChronologyItem(
-            year: '2023',
-            month: '2',
-            day: '11',
-            title: 'ジョイントピアノリサイタル',
-            description:
-                '静岡大学教育学部音楽科有志企画Vol.1「近藤奏 上中友貴 ジョイントピアノリサイタル」を江崎ホールにて開催',
-            isLeft: true,
-            showYear: true,
-          ),
-
-          const ChronologyItem(
-            year: '2023',
-            month: '7',
-            day: '1',
-            title: '静岡大学管弦楽団 ソリスト',
-            description: '第109回定期演奏会にてソリストを務め、グリーグ/ピアノ協奏曲イ短調Op.16を演奏',
+            title: '多分アルバイトに6回くらい落ちて、最終的にチャリで40分くらいのコンビニで雇われる。',
+            description: '',
             isLeft: false,
             showYear: false, // 同じ年なので非表示
           ),
 
           const ChronologyItem(
-            year: '2023',
-            month: '8',
-            day: '8',
-            title: '「クラシックでみる幻想」',
-            description: '静岡大学教育学部音楽科有志企画Vol.2をしずぎんホールユーフォニアにて開催',
+            year: '2021',
+            month: '10',
+            day: 'のある',
+            title: '静岡アンサンブル同好会(アンドウ)を仲間と共に始める。',
+            description: 'あの頃の無敵感、半端ない。',
             isLeft: true,
             showYear: false, // 同じ年なので非表示
           ),
 
           const ChronologyItem(
-            year: '2023',
-            month: '11',
-            day: '26',
-            title: 'Be Phil オーケストラジャパン',
-            description: 'ベルリン・フィルハーモニー管弦楽団楽団主催公演に出演。東京・サントリーホールにて',
+            year: '2026',
+            month: '3',
+            day: '31',
+            title: '卒業予定。',
+            description: 'なお、静岡大学は４年制大学である。',
             isLeft: false,
-            showYear: false, // 同じ年なので非表示
-          ),
-
-          const ChronologyItem(
-            year: '2024',
-            month: '4',
-            day: '6',
-            title: '「音⊃音楽 空気⊃私」',
-            description: '静岡大学教育学部音楽科有志企画Vol.3を静岡音楽館AOIにて開催',
-            isLeft: true,
-            showYear: true,
+            showYear: true, // 同じ年なので非表示
           ),
         ],
       ),
