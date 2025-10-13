@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:kanade_hp/theme/app_theme.dart';
-import 'package:kanade_hp/view/widget/main_visual.dart';
 import 'package:kanade_hp/view/widget/gallery_grid.dart';
 import 'package:kanade_hp/service/gallery_service.dart';
 
@@ -46,10 +44,8 @@ class _GalleryScreenState extends State<GalleryScreen> {
                   // タイトル
                   Text(
                     'Gallery',
-                    style: GoogleFonts.notoSerifJp(
-                      fontSize: 48,
+                    style: Theme.of(context).textTheme.displayLarge?.copyWith(
                       fontWeight: FontWeight.bold,
-                      color: AppTheme.primaryBlack,
                       letterSpacing: 2.0,
                     ),
                   ),
@@ -59,8 +55,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
                   // サブタイトル
                   Text(
                     '演奏会の写真や思い出の一瞬をお楽しみください',
-                    style: GoogleFonts.notoSerifJp(
-                      fontSize: 16,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: AppTheme.mediumGrey,
                       letterSpacing: 1.0,
                     ),
