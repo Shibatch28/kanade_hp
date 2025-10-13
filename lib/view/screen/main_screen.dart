@@ -57,7 +57,7 @@ class MainScreen extends StatelessWidget {
       case ScreenType.concerts:
         return const ConcertsScreen();
       case ScreenType.gallery:
-      // return const GalleryScreen();
+        return const GalleryScreen();
       case ScreenType.contact:
       // return const ContactScreen();
       default:
