@@ -59,7 +59,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 _buildMenuItem(
                   navigationCubit,
                   bottomSheetContext,
-                  'プロフィール',
+                  '足跡 (プロフィール)',
                   ScreenType.about,
                 ),
                 _buildMenuItem(
