@@ -60,8 +60,6 @@ class MainScreen extends StatelessWidget {
         return const GalleryScreen();
       case ScreenType.contact:
         return const ContactScreen();
-      default:
-        return const Center(child: Text('ページが見つかりません'));
     }
   }
 }
