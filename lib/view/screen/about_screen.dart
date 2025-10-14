@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kanade_hp/view/widget/chronology_item.dart';
+import 'package:kanade_hp/view/widget/main_visual.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
@@ -10,14 +11,19 @@ class AboutScreen extends StatelessWidget {
     return Column(
       children: [
         // プロフィールセクション
-        _buildProfileSection(),
-
+        // _buildProfileSection(),
+        MainVisual(
+          title: "足跡 (プロフィール)",
+          imageDirectory: "vis_about",
+          height: 300,
+        ),
         // 年表セクション
         _buildChronologySection(),
       ],
     );
   }
 
+  // ignore: unused_element
   Widget _buildProfileSection() {
     return Container(
       color: const Color(0xFFFAFAFA), // 既存テーマに合わせる
@@ -109,25 +115,12 @@ class AboutScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 60),
       child: Column(
         children: [
-          // セクションタイトル
-          Text(
-            '足跡',
-            style: GoogleFonts.notoSerifJp(
-              fontSize: 36,
-              fontWeight: FontWeight.bold,
-              color: const Color(0xFF1A1A1A),
-              letterSpacing: 2.0,
-            ),
-          ),
-
-          const SizedBox(height: 60),
-
           // 年表アイテム
           const ChronologyItem(
             year: '2002',
             month: '10',
             day: '31',
-            title: '多分諏訪の病院で生まれる',
+            title: '多分諏訪の病院で生まれる。',
             description:
                 '産声を聞いた兄はその場で「カエルさんみたい!!」と。\nこのため近藤奏の口はカエルのようなアヒルのような口っぽくなったと言われている。',
             imagePath: 'assets/chronology/20021031.jpg',
