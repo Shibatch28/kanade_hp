@@ -11,7 +11,28 @@ class ConcertsScreen extends StatelessWidget {
       child: Column(
         children: [
           MainVisual(title: 'コンサート情報', imageDirectory: 'concerts', height: 200),
-          // コンサート情報
+          ConcertInfo(
+            title: '近藤奏 ピアノリサイタル',
+            date: '2025年12月5日(金)',
+            time: '開場:18:15 開演:19:00',
+            venue: '下北沢アレイホール',
+            address: '東京都世田谷区北沢2丁目24-8 下北沢アレイ 3F',
+            flyerImagePath: 'assets/flyers/20251205a.jpeg',
+            programs: [
+              ProgramItem(
+                composer: 'ベートーヴェン',
+                pieces: [
+                  '交響曲第7番イ長調 作品92 第1, 2楽章 (リスト編曲)',
+                  'ピアノソナタ第 14番「月光」嬰ハ短調作品 27-2',
+                ],
+              ),
+              ProgramItem(composer: 'ショパン', pieces: ['ワルツ・フォー・デビィ']),
+              ProgramItem(composer: 'カプースチン', pieces: ['ブラジルの水彩画パラフレーズ']),
+            ],
+            ticketPrice: '全席 自由席 2,500円',
+            ticketInfo: 'チケットのお買い求めはチケットぴあをご利用ください。',
+            ticketOptions: ['チケットぴあ（Pコード:311308）'],
+          ),
           ConcertInfo(
             title: '近藤奏 ピアノリサイタル「C」',
             date: '2025年10月4日(土)',
@@ -32,7 +53,7 @@ class ConcertsScreen extends StatelessWidget {
               ),
             ],
             ticketPrice: '全席 自由席 1200円',
-            ticketInfo: 'チケットのお買い求めはチケットぴあをそのほかサプレイガイドをご利用ください。',
+            ticketInfo: 'チケットのお買い求めはチケットぴあをそのほかプレイガイドをご利用ください。',
             ticketOptions: [
               'チケットぴあ（Pコード:307040）',
               'すみやグッディ本店（葵区呉服町）',

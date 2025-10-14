@@ -3,7 +3,6 @@ import "package:flutter_bloc/flutter_bloc.dart";
 import 'package:google_fonts/google_fonts.dart';
 import "package:kanade_hp/router/app_router.dart";
 
-import "view/screen/main_screen.dart";
 import "theme/app_theme.dart";
 import "cubit/navigation_cubit.dart";
 
