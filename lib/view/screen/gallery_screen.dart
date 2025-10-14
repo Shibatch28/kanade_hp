@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kanade_hp/theme/app_theme.dart';
 import 'package:kanade_hp/view/widget/gallery_grid.dart';
 import 'package:kanade_hp/service/gallery_service.dart';
+import 'package:kanade_hp/view/widget/main_visual.dart';
 
 class GalleryScreen extends StatefulWidget {
   const GalleryScreen({super.key});
@@ -32,6 +33,12 @@ class _GalleryScreenState extends State<GalleryScreen> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // メインビジュアル（小さめ）
+        const MainVisual(
+          title: 'ギャラリー',
+          imageDirectory: 'vis_gallery',
+          height: 300,
+        ),
         // ギャラリーコンテンツ
         Container(
           color: AppTheme.primaryWhite,
@@ -41,20 +48,11 @@ class _GalleryScreenState extends State<GalleryScreen> {
               constraints: const BoxConstraints(maxWidth: 1200),
               child: Column(
                 children: [
-                  // タイトル
-                  Text(
-                    'Gallery',
-                    style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 2.0,
-                    ),
-                  ),
-
                   const SizedBox(height: 20),
 
                   // サブタイトル
                   Text(
-                    '演奏会の写真や思い出の一瞬をお楽しみください',
+                    '演奏会の写真や思い出の一瞬をお楽しみください。',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: AppTheme.mediumGrey,
                       letterSpacing: 1.0,

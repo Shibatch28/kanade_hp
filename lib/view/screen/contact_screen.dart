@@ -11,7 +11,11 @@ class ContactScreen extends StatelessWidget {
     return Column(
       children: [
         // メインビジュアル（小さめ）
-        // const MainVisual(height: 300),
+        const MainVisual(
+          title: 'お問い合わせ',
+          imageDirectory: 'vis_contact',
+          height: 300,
+        ),
 
         // コンタクトコンテンツ
         Container(
@@ -23,28 +27,6 @@ class ContactScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // タイトル
-                  Text(
-                    'contact',
-                    style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                      letterSpacing: 4.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-
-                  const SizedBox(height: 8),
-
-                  // サブタイトル
-                  Text(
-                    '( お問い合わせ )',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppTheme.mediumGrey,
-                      letterSpacing: 2.0,
-                    ),
-                  ),
-
-                  const SizedBox(height: 80),
-
                   // メールでのお問い合わせセクション
                   _buildEmailSection(context),
                 ],
