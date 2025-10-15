@@ -1,35 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
     <base href="$FLUTTER_BASE_HREF" />
 
     <meta charset="UTF-8" />
     <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
-    <meta name="description" content="近藤奏の公式サイト" />
+    <meta
+      name="description"
+      content="近藤奏の公式サイト - ピアニスト近藤奏の演奏会情報、プロフィール、ギャラリーをご覧いただけます"
+    />
 
-    <!-- iOS meta tags & icons -->
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="apple-mobile-web-app-title" content="近藤奏 Official" />
-    <link rel="apple-touch-icon" href="icons/Icon-192.png" />
+    <!-- OGP (Open Graph Protocol) タグ -->
+    <meta property="og:title" content="近藤奏 Official Website" />
+    <meta
+      property="og:description"
+      content="ピアニスト近藤奏の公式サイトです。最新の演奏会情報やプロフィールをご覧ください。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kanadeoffcial.net" />
+    <meta
+      property="og:image"
+      content="https://kanadeoffcial.net/icons/icon-512.png"
+    />
+    <meta property="og:site_name" content="近藤奏 Official" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="近藤奏 Official Website" />
+    <meta
+      name="twitter:description"
+      content="ピアニスト近藤奏の公式サイトです。"
+    />
+    <meta
+      name="twitter:image"
+      content="https://kanadeoffcial.net/icons/icon-512.png"
+    />
 
-    <title>kanade_hp</title>
+    <!-- サイト名とタイトル -->
+    <title>近藤奏 Official Website</title>
+
     <link rel="manifest" href="manifest.json" />
   </head>
   <body>
