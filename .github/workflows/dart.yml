@@ -34,7 +34,11 @@ jobs:
         run: flutter pub get
 
       - name: Build web
-        run: flutter build web --release --base-href="/kanade_hp/"
+        run: flutter build web --release --base-href="/" --pwa-strategy=none
+
+      - name: Add CNAME
+        if: github.ref == 'refs/heads/main'
+        run: echo "kanadehsoffcial.net" > build/web/CNAME
 
       - name: Setup Pages
         if: github.ref == 'refs/heads/main'
