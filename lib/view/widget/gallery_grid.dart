@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:kanade_hp/theme/app_theme.dart';
 import 'package:kanade_hp/view/widget/gallery_item.dart';
 import 'package:kanade_hp/view/widget/fullscreen_gallery.dart';
@@ -29,9 +28,9 @@ class GalleryGrid extends StatelessWidget {
         child: Center(
           child: Text(
             '画像が見つかりません',
-            style: GoogleFonts.notoSerifJp(
-              fontSize: 18,
-              color: AppTheme.mediumGrey,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: AppTheme.primaryBlack,
             ),
           ),
         ),

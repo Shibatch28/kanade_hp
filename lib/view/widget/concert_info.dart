@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:kanade_hp/theme/app_theme.dart';
+import 'package:kanade_hp/utils/responsive.dart';
 
 class ConcertInfo extends StatelessWidget {
   final String title;
@@ -36,27 +36,45 @@ class ConcertInfo extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          _buildTitle(),
+          _buildTitle(context),
           const SizedBox(height: 40),
-          _buildMainContent(), // ここにすべてが含まれるようになります
+          _buildMainContent(context), // ここにすべてが含まれるようになります
         ],
       ),
     );
   }
 
-  Widget _buildTitle() {
+  Widget _buildTitle(BuildContext context) {
     return Text(
       title,
-      style: GoogleFonts.notoSerifJp(
-        fontSize: 28,
+      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
         fontWeight: FontWeight.bold,
-        color: Colors.black87,
+        color: AppTheme.primaryBlack,
       ),
       textAlign: TextAlign.center,
     );
   }
 
-  Widget _buildMainContent() {
+  Widget _buildMainContent(BuildContext context) {
+    final isMobile = Responsive.isMobile(context);
+
+    if (isMobile) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          if (flyerImagePath != null) ...[
+            _buildFlyerImage(),
+            const SizedBox(height: 40),
+          ],
+          _buildEventDetails(context),
+          const SizedBox(height: 40),
+          _buildProgramSection(context),
+          const SizedBox(height: 40),
+          _buildTicketSection(context),
+        ],
+      );
+    }
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -65,9 +83,7 @@ class ConcertInfo extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Container(
-              constraints: const BoxConstraints(
-                maxWidth: 600, // 幅を少し増やす
-              ),
+              constraints: const BoxConstraints(maxWidth: 600),
               child: _buildFlyerImage(),
             ),
           ),
@@ -78,11 +94,11 @@ class ConcertInfo extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildEventDetails(),
+              _buildEventDetails(context),
               const SizedBox(height: 40),
-              _buildProgramSection(),
+              _buildProgramSection(context),
               const SizedBox(height: 40),
-              _buildTicketSection(),
+              _buildTicketSection(context),
             ],
           ),
         ),
@@ -90,35 +106,33 @@ class ConcertInfo extends StatelessWidget {
     );
   }
 
-  Widget _buildEventDetails() {
+  Widget _buildEventDetails(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildDetailItem('日時', '$date\n$time'),
+        _buildDetailItem(context, '日時', '$date\n$time'),
         const SizedBox(height: 20),
-        _buildDetailItem('会場', '$venue\n$address'),
+        _buildDetailItem(context, '会場', '$venue\n$address'),
       ],
     );
   }
 
-  Widget _buildDetailItem(String label, String content) {
+  Widget _buildDetailItem(BuildContext context, String label, String content) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           label,
-          style: GoogleFonts.notoSerifJp(
-            fontSize: 18,
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.bold,
-            color: Colors.black87,
+            color: AppTheme.primaryBlack,
           ),
         ),
         const SizedBox(height: 8),
         Text(
           content,
-          style: GoogleFonts.notoSerifJp(
-            fontSize: 16,
-            color: Colors.black54,
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            color: AppTheme.darkGrey,
             height: 1.6,
           ),
         ),
@@ -132,7 +146,7 @@ class ConcertInfo extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1),
+            color: AppTheme.primaryBlack.withValues(alpha: 0.1),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -145,25 +159,24 @@ class ConcertInfo extends StatelessWidget {
     );
   }
 
-  Widget _buildProgramSection() {
+  Widget _buildProgramSection(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'プログラム',
-          style: GoogleFonts.notoSerifJp(
-            fontSize: 24,
+          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
             fontWeight: FontWeight.bold,
-            color: Colors.black87,
+            color: AppTheme.primaryBlack,
           ),
         ),
         const SizedBox(height: 20),
-        ...programs.map((program) => _buildProgramItem(program)),
+        ...programs.map((program) => _buildProgramItem(context, program)),
       ],
     );
   }
 
-  Widget _buildProgramItem(ProgramItem program) {
+  Widget _buildProgramItem(BuildContext context, ProgramItem program) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: Column(
@@ -171,10 +184,9 @@ class ConcertInfo extends StatelessWidget {
         children: [
           Text(
             program.composer,
-            style: GoogleFonts.notoSerifJp(
-              fontSize: 18,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
               fontWeight: FontWeight.bold,
-              color: Colors.black87,
+              color: AppTheme.primaryBlack,
             ),
           ),
           const SizedBox(height: 8),
@@ -186,17 +198,15 @@ class ConcertInfo extends StatelessWidget {
                 children: [
                   Text(
                     '• ',
-                    style: GoogleFonts.notoSerifJp(
-                      fontSize: 16,
-                      color: Colors.black54,
-                    ),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyLarge?.copyWith(color: AppTheme.darkGrey),
                   ),
                   Expanded(
                     child: Text(
                       piece,
-                      style: GoogleFonts.notoSerifJp(
-                        fontSize: 16,
-                        color: Colors.black54,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        color: AppTheme.darkGrey,
                         height: 1.6,
                       ),
                     ),
@@ -210,26 +220,24 @@ class ConcertInfo extends StatelessWidget {
     );
   }
 
-  Widget _buildTicketSection() {
+  Widget _buildTicketSection(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'チケット情報',
-          style: GoogleFonts.notoSerifJp(
-            fontSize: 24,
+          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
             fontWeight: FontWeight.bold,
-            color: Colors.black87,
+            color: AppTheme.primaryBlack,
           ),
         ),
         const SizedBox(height: 20),
-        _buildDetailItem('料金', ticketPrice),
+        _buildDetailItem(context, '料金', ticketPrice),
         const SizedBox(height: 20),
         Text(
           ticketInfo,
-          style: GoogleFonts.notoSerifJp(
-            fontSize: 16,
-            color: Colors.black54,
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            color: AppTheme.darkGrey,
             height: 1.6,
           ),
         ),
@@ -242,17 +250,15 @@ class ConcertInfo extends StatelessWidget {
               children: [
                 Text(
                   '• ',
-                  style: GoogleFonts.notoSerifJp(
-                    fontSize: 16,
-                    color: Colors.black54,
-                  ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge?.copyWith(color: AppTheme.darkGrey),
                 ),
                 Expanded(
                   child: Text(
                     option,
-                    style: GoogleFonts.notoSerifJp(
-                      fontSize: 16,
-                      color: Colors.black54,
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      color: AppTheme.darkGrey,
                       height: 1.6,
                     ),
                   ),

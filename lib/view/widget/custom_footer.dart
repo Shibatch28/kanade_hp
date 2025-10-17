@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kanade_hp/models/consts.dart';
+import 'package:kanade_hp/models/social_link.dart';
+import 'package:kanade_hp/utils/responsive.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CustomFooter extends StatelessWidget {
@@ -6,116 +9,74 @@ class CustomFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = Responsive.isMobile(context);
     return Container(
       width: double.infinity,
       color: const Color(0xFFF5F5F5),
-      padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 60),
+      padding: EdgeInsets.symmetric(
+        vertical: isMobile ? 30 : 40,
+        horizontal: isMobile ? 20 : 60,
+      ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // SNSリンク部分
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              _buildSocialLink(
-                icon: Icons.music_note, // Twitter代替
-                label: 'Petit four',
-                url: 'https://x.com/petitfour309',
-              ),
-              const SizedBox(width: 20),
-              _buildSocialLink(
-                icon: Icons.people, // スタッフ
-                label: '近藤 奏 X個人アカウント',
-                url: 'https://x.com/immortal_dirt5',
-              ),
-              const SizedBox(width: 20),
-              _buildSocialLink(
-                icon: Icons.facebook,
-                label: '近藤 奏 Facebook',
-                url: 'https://www.facebook.com/profile.php?id=100032395710443',
-              ),
-              // const SizedBox(width: 20),
-              // _buildSocialLink(
-              //   icon: Icons.video_library, // YouTube
-              //   label: 'official youtube channel',
-              //   url: 'https://youtube.com/channel/official',
-              // ),
-            ],
-          ),
-
-          const SizedBox(height: 30),
-
-          // コピーライト部分
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              // 左側のコピーライト
-              Text(
-                'Copyright(c) Kondo Kanade Official Website. All Rights Reserved.',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.grey[600],
-                  letterSpacing: 0.5,
-                ),
-              ),
-
-              // 右側の装飾とロゴ
-              Row(
-                children: [
-                  // ロゴ部分
-                  Column(
-                    children: [
-                      // yanaginagi premium fanclub ロゴ
-                      // Container(
-                      //   padding: const EdgeInsets.all(8),
-                      //   child: Column(
-                      //     children: [
-                      //       Text(
-                      //         'yanaginagi',
-                      //         style: TextStyle(
-                      //           fontSize: 16,
-                      //           fontWeight: FontWeight.bold,
-                      //           color: Colors.grey[700],
-                      //         ),
-                      //       ),
-                      //       Text(
-                      //         'premium fanclub',
-                      //         style: TextStyle(
-                      //           fontSize: 10,
-                      //           color: Colors.grey[600],
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
+          _buildAllSocialLinks(isMobile),
+          SizedBox(height: isMobile ? 20 : 30),
+          // Copyright
+          _buildCopyright(isMobile),
         ],
       ),
     );
   }
 
-  Widget _buildSocialLink({
-    required IconData icon,
-    required String label,
-    required String url,
-  }) {
+  Widget _buildAllSocialLinks(bool isMobile) {
+    if (isMobile) {
+      // モバイル: 縦並び
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildSocialLink(linkData: kanadeX),
+          const SizedBox(height: 12),
+          _buildSocialLink(linkData: kanadeFacebook),
+          const SizedBox(height: 12),
+          _buildSocialLink(linkData: petitFourSite),
+          const SizedBox(height: 12),
+          _buildSocialLink(linkData: petitFourX),
+        ],
+      );
+    } else {
+      // デスクトップ: 横並び (折り返し対応)
+      return Wrap(
+        spacing: 20,
+        runSpacing: 12,
+        children: [
+          _buildSocialLink(linkData: kanadeX),
+          _buildSocialLink(linkData: kanadeFacebook),
+          _buildSocialLink(linkData: petitFourSite),
+          _buildSocialLink(linkData: petitFourX),
+        ],
+      );
+    }
+  }
+
+  /// SNSリンクのウィジェットを生成する
+  Widget _buildSocialLink({required SocialLink linkData}) {
     return GestureDetector(
-      onTap: () => _launchUrl(url),
+      onTap: () => _launchUrl(linkData.url),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 16, color: Colors.grey[700]),
+          Icon(linkData.icon, size: 16, color: Colors.grey[700]),
           const SizedBox(width: 4),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              color: Colors.grey[700],
-              decoration: TextDecoration.underline,
+          Flexible(
+            child: Text(
+              linkData.label,
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.grey[700],
+                decoration: TextDecoration.underline,
+              ),
             ),
           ),
         ],
@@ -123,10 +84,71 @@ class CustomFooter extends StatelessWidget {
     );
   }
 
+  Widget _buildCopyright(bool isMobile) {
+    if (isMobile) {
+      // モバイル：縦並び、小さいフォント
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Copyright(c) Kondo Kanade Official Website.',
+            style: TextStyle(
+              fontSize: 10,
+              color: Colors.grey[600],
+              letterSpacing: 0.3,
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            'All Rights Reserved.',
+            style: TextStyle(
+              fontSize: 10,
+              color: Colors.grey[600],
+              letterSpacing: 0.3,
+            ),
+          ),
+        ],
+      );
+    } else {
+      // デスクトップ：横並び
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Flexible(
+            child: Text(
+              'Copyright(c) Kondo Kanade Official Website. All Rights Reserved.',
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.grey[600],
+                letterSpacing: 0.5,
+              ),
+            ),
+          ),
+          const SizedBox.shrink(),
+        ],
+      );
+    }
+  }
+
+  /// 指定されたURLをデフォルトのブラウザまたは適切なアプリケーションで開きます。
+  ///
+  /// このメソッドは、システムのデフォルトのURLスキームハンドラを使用して、
+  /// 指定された[url]を開こうとします。URLを開けない場合は例外がスローされます。
+  ///
+  /// パラメータ:
+  ///   - [url]: 開くURLの文字列。有効なURL形式である必要があります。
+  ///
+  /// 例外:
+  ///   - [Exception]: システムがURLを開けない場合にスローされます。
+  ///
+  /// 使用例:
+  /// ```dart
+  /// await _launchUrl('https://www.example.com');
+  /// ```
   Future<void> _launchUrl(String url) async {
     final Uri uri = Uri.parse(url);
     if (!await launchUrl(uri)) {
-      throw Exception('Could not launch $url');
+      throw Exception("Could bit launch $url");
     }
   }
 }
