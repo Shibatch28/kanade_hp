@@ -1,42 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:kanade_hp/theme/app_theme.dart';
+import 'package:kanade_hp/utils/responsive.dart';
 
-/// 年表アイテムウィジェット
-///
-/// 使用例:
-/// ```dart
-/// ChronologyItem(
-///   year: '2023',
-///   month: '2',
-///   day: '11',
-///   title: 'ジョイントピアノリサイタル',
-///   description: '静岡大学教育学部音楽科有志企画Vol.1を江崎ホールにて開催',
-///   imagePath: 'assets/chronology/recital.jpg', // 画像がある場合
-///   isLeft: true, // 左側に配置
-///   showYear: true, // 年を表示するかどうか（デフォルト: true）
-/// ),
-///
-/// ChronologyItem(
-///   year: '2023', // 同じ年の場合
-///   month: '7',
-///   day: '1',
-///   title: '別のイベント',
-///   description: '同じ年の別のイベント',
-///   isLeft: false,
-///   showYear: false, // 年を非表示
-/// ),
-/// ```
-///
-/// パラメータ:
-/// - [year]: 表示する年（必須）
-/// - [month]: 月（空文字列可）
-/// - [day]: 日（空文字列可）
-/// - [title]: タイトル（必須）
-/// - [description]: 説明文（null可）
-/// - [imagePath]: 画像のパス（null可）
-/// - [isLeft]: true=左側配置、false=右側配置
-/// - [showYear]: 年を表示するかどうか（デフォルト: true）
 class ChronologyItem extends StatelessWidget {
   final String year;
   final String month;
@@ -45,7 +10,7 @@ class ChronologyItem extends StatelessWidget {
   final String? description;
   final String? imagePath;
   final bool isLeft;
-  final bool showYear; // 年を表示するかどうか
+  final bool showYear;
 
   const ChronologyItem({
     super.key,
@@ -56,18 +21,40 @@ class ChronologyItem extends StatelessWidget {
     this.description,
     this.imagePath,
     required this.isLeft,
-    this.showYear = true, // デフォルトは表示
+    this.showYear = true,
   });
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = Responsive.isMobile(context);
+    if (isMobile) {
+      return _buildModileLayout(context, isMobile);
+    } else {
+      return _buildDesktopLayout(context);
+    }
+  }
+
+  Widget _buildModileLayout(BuildContext context, bool isMobile) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        if (showYear || month.isNotEmpty || day.isNotEmpty)
+          _buildTimelineHeader(context),
+        if (imagePath != null) _buildImageContent(isMobile),
+        _buildTextContent(context, isMobile),
+        const SizedBox(height: 30),
+      ],
+    );
+  }
+
+  Widget _buildDesktopLayout(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 40),
       child: Column(
         children: [
           // 年と月日の表示
           if (showYear || month.isNotEmpty || day.isNotEmpty)
-            _buildTimelineHeader(),
+            _buildTimelineHeader(context),
 
           const SizedBox(height: 15),
 
@@ -80,9 +67,9 @@ class ChronologyItem extends StatelessWidget {
                 Expanded(
                   child:
                       isLeft
-                          ? _buildTextContent() // テキストが左側
+                          ? _buildTextContent(context, false) // テキストが左側
                           : (imagePath != null
-                              ? _buildImageContent()
+                              ? _buildImageContent(Responsive.isMobile(context))
                               : const SizedBox()), // 画像が左側
                 ),
 
@@ -94,52 +81,15 @@ class ChronologyItem extends StatelessWidget {
                   child:
                       isLeft
                           ? (imagePath != null
-                              ? _buildImageContent()
+                              ? _buildImageContent(Responsive.isMobile(context))
                               : const SizedBox()) // 画像が右側
-                          : _buildTextContent(), // テキストが右側
+                          : _buildTextContent(context, false), // テキストが右側
                 ),
               ],
             ),
           ),
         ],
       ),
-    );
-  }
-
-  /// タイムラインのヘッダー（年と月日）を構築
-  Widget _buildTimelineHeader() {
-    return Column(
-      children: [
-        // 年表示（条件付き）
-        if (showYear)
-          FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Text(
-              year,
-              style: GoogleFonts.notoSerifJp(
-                fontSize: 72,
-                fontWeight: FontWeight.bold,
-                color: AppTheme.primaryBlack,
-                letterSpacing: 2.0,
-              ),
-            ),
-          ),
-
-        // 年と月日の間隔
-        if (showYear && (month.isNotEmpty || day.isNotEmpty))
-          const SizedBox(height: 8),
-
-        // 月日表示
-        if (month.isNotEmpty || day.isNotEmpty)
-          Text(
-            '$month月$day日',
-            style: GoogleFonts.notoSerifJp(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-              color: AppTheme.darkGrey,
-            ),
-          ),
-      ],
     );
   }
 
@@ -181,16 +131,59 @@ class ChronologyItem extends StatelessWidget {
     );
   }
 
+  /// タイムラインのヘッダ (年と月日) を構築
+  Widget _buildTimelineHeader(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        if (showYear)
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              year,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                fontSize: Responsive.isMobile(context) ? 48 : 72,
+                fontWeight: FontWeight.bold,
+                color: AppTheme.primaryBlack,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+
+        // 年と月日の間隔
+        if (showYear && (month.isNotEmpty || day.isNotEmpty))
+          const SizedBox(height: 8),
+
+        // 月日表示
+        if (month.isNotEmpty || day.isNotEmpty)
+          Text(
+            "$month月$day日",
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+              fontSize: 24,
+              fontWeight: FontWeight.w500,
+              color: AppTheme.darkGrey,
+            ),
+            textAlign: TextAlign.center,
+          ),
+      ],
+    );
+  }
+
   /// 画像コンテンツを構築
-  Widget _buildImageContent() {
+  Widget _buildImageContent(bool isMobile) {
     return Padding(
-      padding: EdgeInsets.only(
-        left: isLeft ? 30 : 0, // 左側テキストの場合、画像は右側なので左マージン
-        right: isLeft ? 0 : 30, // 右側テキストの場合、画像は左側なので右マージン
-      ),
+      padding:
+          isMobile
+              ? EdgeInsets.zero
+              : EdgeInsets.only(
+                left: isLeft ? 30 : 0, // 左側テキストの場合、画像は右側なので左マージン
+                right: isLeft ? 0 : 30, // 右側テキストの場合、画像は左側なので右マージン
+              ),
       child: Align(
         alignment:
-            isLeft
+            isMobile
+                ? Alignment.center
+                : isLeft
                 ? Alignment.centerLeft
                 : Alignment.centerRight, // タイムライン側に寄せる
         child: SizedBox(
@@ -206,23 +199,31 @@ class ChronologyItem extends StatelessWidget {
   }
 
   /// テキストコンテンツを構築
-  Widget _buildTextContent() {
+  Widget _buildTextContent(BuildContext context, bool isMobile) {
     return Padding(
-      padding: EdgeInsets.only(left: isLeft ? 0 : 30, right: isLeft ? 30 : 0),
+      padding:
+          isMobile
+              ? EdgeInsets.zero
+              : EdgeInsets.only(left: isLeft ? 0 : 30, right: isLeft ? 30 : 0),
       child: Column(
         crossAxisAlignment:
-            isLeft ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+            isMobile
+                ? CrossAxisAlignment.center
+                : isLeft
+                ? CrossAxisAlignment.end
+                : CrossAxisAlignment.start,
         children: [
           // タイトル
           Text(
             title,
-            style: GoogleFonts.notoSerifJp(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: AppTheme.darkGrey,
-              letterSpacing: 1.0,
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+              fontWeight: FontWeight.w700,
+              color: AppTheme.charcoal,
             ),
-            textAlign: isLeft ? TextAlign.right : TextAlign.left,
+            textAlign:
+                isMobile
+                    ? TextAlign.center
+                    : (isLeft ? TextAlign.right : TextAlign.left),
           ),
 
           const SizedBox(height: 12),
@@ -231,13 +232,13 @@ class ChronologyItem extends StatelessWidget {
           if (description != null)
             Text(
               description!,
-              style: GoogleFonts.notoSerifJp(
-                fontSize: 15,
-                height: 1.8,
-                color: AppTheme.mediumGrey,
-                letterSpacing: 0.5,
-              ),
-              textAlign: isLeft ? TextAlign.right : TextAlign.left,
+              style: Theme.of(
+                context,
+              ).textTheme.bodyMedium?.copyWith(color: AppTheme.darkGrey),
+              textAlign:
+                  isMobile
+                      ? TextAlign.center
+                      : (isLeft ? TextAlign.right : TextAlign.left),
             ),
         ],
       ),
