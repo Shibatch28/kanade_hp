@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => NavigationCubit(),
       child: MaterialApp.router(
-        title: '近藤奏 Official',
+        title: '近藤奏 Offcial',
         theme: AppTheme.lightTheme,
         routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,
