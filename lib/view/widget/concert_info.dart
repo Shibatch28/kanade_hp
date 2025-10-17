@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:kanade_hp/theme/app_theme.dart';
 import 'package:kanade_hp/utils/responsive.dart';
 
