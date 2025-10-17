@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 /// 画面サイズに応じたレスポンシブ判定を行うユーティリティクラス
 class Responsive {
