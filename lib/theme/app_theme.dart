@@ -13,10 +13,10 @@ class AppTheme {
   // ライトテーマ
   static ThemeData get lightTheme {
     // 事前にテキストテーマを作成
-    final textTheme = GoogleFonts.notoSerifJpTextTheme();
+    final textTheme = GoogleFonts.notoSansJpTextTheme();
 
     return ThemeData(
-      fontFamily: GoogleFonts.notoSerifJp().fontFamily,
+      fontFamily: GoogleFonts.notoSansJp().fontFamily,
       colorScheme: const ColorScheme.light(
         primary: primaryBlack,
         secondary: charcoal,
@@ -61,7 +61,7 @@ class AppTheme {
         foregroundColor: darkGrey,
         elevation: 0,
         shadowColor: Colors.transparent,
-        titleTextStyle: GoogleFonts.notoSerifJp(
+        titleTextStyle: GoogleFonts.notoSansJp(
           color: darkGrey,
           fontSize: 18,
           fontWeight: FontWeight.w500,
@@ -77,7 +77,7 @@ class AppTheme {
           elevation: 0,
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
           shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-          textStyle: GoogleFonts.notoSerifJp(
+          textStyle: GoogleFonts.notoSansJp(
             fontWeight: FontWeight.w500,
             letterSpacing: 1.0,
           ),

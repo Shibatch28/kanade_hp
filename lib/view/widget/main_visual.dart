@@ -131,7 +131,7 @@ class _MainVisualContentState extends State<_MainVisualContent> {
                         ),
                       ],
                     ) ??
-                    GoogleFonts.notoSerifJp(
+                    GoogleFonts.notoSansJp(
                       fontSize: 48,
                       fontWeight: FontWeight.w600,
                       color: Colors.white.withValues(alpha: 0.8),

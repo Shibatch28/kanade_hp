@@ -10,7 +10,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Google Fontsを事前に読み込み
-  await GoogleFonts.pendingFonts([GoogleFonts.notoSerifJp()]);
+  await GoogleFonts.pendingFonts([GoogleFonts.notoSansJp()]);
   runApp(const MyApp());
 }
 

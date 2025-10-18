@@ -68,7 +68,7 @@ class AboutScreen extends StatelessWidget {
                       // タイトル
                       Text(
                         '近藤 奏',
-                        style: GoogleFonts.notoSerifJp(
+                        style: GoogleFonts.notoSansJp(
                           fontSize: 48,
                           fontWeight: FontWeight.w600,
                           color: const Color(0xFF1A1A1A),
@@ -90,7 +90,7 @@ class AboutScreen extends StatelessWidget {
                         '2023年8月8日に静岡大学教育学部音楽科有志企画Vol.2「クラシックでみる幻想」をしずぎんホールユーフォニアにて開催。\n\n'
                         '2023年 ベルリン・フィルハーモニー管弦楽団 楽団主催"Be Phil Orchestra"のメンバーとして、11月26日に東京・サントリーホールにて開催されたBe Philオーケストラジャパン 公演に出演。\n\n'
                         '2024年4月6日に静岡大学教育学部音楽科有志企画Vol.3「音⊃音楽 空気⊃私」を静岡音楽館AOIにて開催。',
-                        style: GoogleFonts.notoSerifJp(
+                        style: GoogleFonts.notoSansJp(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                           color: const Color(0xFF3A3A3A), // 既存テーマの色に統一
