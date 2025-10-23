@@ -50,17 +50,6 @@ class _GalleryScreenState extends State<GalleryScreen> {
                 children: [
                   const SizedBox(height: 20),
 
-                  // サブタイトル
-                  Text(
-                    '演奏会の写真や思い出の一瞬をお楽しみください。',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppTheme.mediumGrey,
-                      letterSpacing: 1.0,
-                    ),
-                  ),
-
-                  const SizedBox(height: 60),
-
                   // ギャラリーグリッド
                   GalleryGrid(imageAssets: _imageAssets, isLoading: _isLoading),
                 ],
