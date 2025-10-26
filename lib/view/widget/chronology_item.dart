@@ -142,7 +142,7 @@ class ChronologyItem extends StatelessWidget {
             child: Text(
               year,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontSize: Responsive.isMobile(context) ? 48 : 72,
+                fontSize: Responsive.isMobile(context) ? 48 : 48,
                 fontWeight: FontWeight.bold,
                 color: AppTheme.primaryBlack,
               ),
@@ -150,21 +150,17 @@ class ChronologyItem extends StatelessWidget {
             ),
           ),
 
-        // 年と月日の間隔
-        if (showYear && (month.isNotEmpty || day.isNotEmpty))
-          const SizedBox(height: 8),
-
         // 月日表示
         if (month.isNotEmpty || day.isNotEmpty)
           Text(
             "$month月$day日",
-            style: Theme.of(context).textTheme.titleSmall?.copyWith(
-              fontSize: 24,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
               fontWeight: FontWeight.w500,
               color: AppTheme.darkGrey,
             ),
             textAlign: TextAlign.center,
           ),
+        const SizedBox(height: 2),
       ],
     );
   }
