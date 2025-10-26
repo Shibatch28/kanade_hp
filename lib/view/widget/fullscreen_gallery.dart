@@ -143,6 +143,33 @@ class _FullscreenGalleryState extends State<FullscreenGallery> {
   }
 
   Widget _buildIndicator() {
+    final totalDots = widget.imageAssets.length;
+    final maxDotsPerRow = 15; // 1行あたりの最大ドット数
+
+    // 1行で収まる場合は通常表示
+    if (totalDots <= maxDotsPerRow) {
+      return Center(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          decoration: BoxDecoration(
+            color: Colors.black.withValues(alpha: 0.5),
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: List.generate(
+              totalDots,
+              (index) => _buildDot(index == currentIndex),
+            ),
+          ),
+        ),
+      );
+    }
+
+    // 2行に分割して表示
+    final firstRowCount = (totalDots / 2).ceil();
+    final secondRowCount = totalDots - firstRowCount;
+
     return Center(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -150,24 +177,52 @@ class _FullscreenGalleryState extends State<FullscreenGallery> {
           color: Colors.black.withValues(alpha: 0.5),
           borderRadius: BorderRadius.circular(20),
         ),
-        child: Row(
+        child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: List.generate(
-            widget.imageAssets.length,
-            (index) => Container(
-              margin: const EdgeInsets.symmetric(horizontal: 4),
-              width: 8,
-              height: 8,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color:
-                    index == currentIndex
-                        ? Colors.white
-                        : Colors.white.withValues(alpha: 0.5),
+          children: [
+            // 1行目
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: List.generate(
+                firstRowCount,
+                (index) => _buildDot(index == currentIndex),
               ),
             ),
-          ),
+            const SizedBox(height: 8),
+            // 2行目
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: List.generate(
+                secondRowCount,
+                (index) => _buildDot(index + firstRowCount == currentIndex),
+              ),
+            ),
+          ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildDot(bool isActive) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+      margin: const EdgeInsets.symmetric(horizontal: 4),
+      width: isActive ? 12 : 8,
+      height: isActive ? 12 : 8,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: isActive ? Colors.white : Colors.white.withValues(alpha: 0.4),
+        boxShadow:
+            isActive
+                ? [
+                  BoxShadow(
+                    color: Colors.white.withValues(alpha: 0.5),
+                    blurRadius: 4,
+                    spreadRadius: 1,
+                  ),
+                ]
+                : null,
       ),
     );
   }
