@@ -8,7 +8,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       children: [
-        MainVisual(title: '近藤奏 Offcial', imageDirectory: 'main_visual'),
+        MainVisual(title: '近藤奏 Off cial', imageDirectory: 'main_visual'),
       ],
     );
   }

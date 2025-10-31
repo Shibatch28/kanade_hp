@@ -10,7 +10,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Google Fontsを事前に読み込み
-  await GoogleFonts.pendingFonts([GoogleFonts.notoSansJp()]);
+  await GoogleFonts.pendingFonts([GoogleFonts.zenMaruGothic()]);
   runApp(const MyApp());
 }
 
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => NavigationCubit(),
       child: MaterialApp.router(
-        title: '近藤奏 Offcial',
+        title: '近藤奏 Off cial',
         theme: AppTheme.lightTheme,
         routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,

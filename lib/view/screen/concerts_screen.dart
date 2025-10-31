@@ -64,6 +64,12 @@ class ConcertsScreen extends StatelessWidget {
             ticketInfo: 'チケットのお買い求めはチケットぴあをご利用ください。',
             ticketOptions: ['チケットぴあ（Pコード:311308）'],
           ),
+          const SizedBox(height: 30),
+          const Text(
+            '過去のコンサート',
+            style: TextStyle(fontSize: 48),
+            textAlign: TextAlign.center,
+          ),
           ConcertInfo(
             title: '近藤奏 ピアノリサイタル「C」',
             date: '2025年10月4日(土)',
