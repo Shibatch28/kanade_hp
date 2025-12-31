@@ -15,43 +15,15 @@ class ConcertsScreen extends StatelessWidget {
         children: [
           MainVisual(title: 'コンサート情報', imageDirectory: 'concerts', height: 200),
           ConcertInfo(
-            title: 'お寺今世音(こんさあと)',
-            date: '2025年12月5日(金)',
-            time: '開場:15:00 開演:16:00',
-            venue: '南叟寺',
-            address: '静岡県静岡市葵区足久保口組 1579',
-            flyerImagePath: 'assets/flyers/20251115a.jpg',
-            programs: [
-              ProgramItem(composer: 'ドビュッシー', pieces: ['映像第1集より「水の反映」']),
-              ProgramItem(composer: 'サティ', pieces: ['ジムノペディ第1番']),
-              ProgramItem(
-                composer: '千原英喜',
-                pieces: ['星月夜34の音の画集より「夕暮れ時は逢魔が時」'],
-              ),
-              ProgramItem(composer: 'ラヴェル', pieces: ['亡き王女のためのパヴァーヌ']),
-              ProgramItem(composer: '南こうせつ', pieces: ['まごころに生きる']),
-              ProgramItem(composer: 'カプースチン', pieces: ['演奏会用エチュード第3番トッカティーナ']),
-              ProgramItem(
-                composer: '吉松隆',
-                pieces: ['プレイアデス舞曲集Ⅱより「鳥のいる間奏曲」', 'プレイアデス舞曲集Ⅴより「夕暮れのアラベスク」'],
-              ),
-              ProgramItem(composer: 'ドビュッシー', pieces: ['ベルガマスク組曲より「月の光」']),
-              ProgramItem(
-                composer: 'ムソルグスキー',
-                pieces: ['展覧会の絵より「鶏の足の上に建っている小屋(バーバ・ヤガー)「キエフの大きな門」'],
-              ),
-            ],
-            ticketPrice: '入場無料 要入場券 (未就学児入場可･無くなり次第終了となります)',
-            ticketInfo: 'チケットの入手場所はこちらから:',
-            ticketOptions: ['すみやグッディ本店 (呉服町)', 'Google Forms (当日受付にて入場券お渡し)'],
-          ),
-          ConcertInfo(
             title: '近藤奏 ピアノリサイタル',
-            date: '2025年12月5日(金)',
+            date: '延期',
             time: '開場:18:15 開演:19:00',
             venue: '下北沢アレイホール',
             address: '東京都世田谷区北沢2丁目24-8 下北沢アレイ 3F',
-            flyerImagePath: 'assets/flyers/20251205a.jpeg',
+            flyerImagePaths: const [
+              'assets/flyers/20251205a.jpeg',
+              'assets/flyers/20251205b.jpeg',
+            ],
             programs: [
               ProgramItem(
                 composer: 'ベートーヴェン',
@@ -79,7 +51,7 @@ class ConcertsScreen extends StatelessWidget {
             time: '開場:13:20 開演:14:00',
             venue: '江崎ホール',
             address: '静岡市葵区七間町8-20 毎日江崎ビル9階',
-            flyerImagePath: 'assets/flyers/flyer_C.png',
+            flyerImagePaths: const ['assets/flyers/flyer_C.png'],
             programs: [
               ProgramItem(
                 composer: 'ショパン',
@@ -99,6 +71,40 @@ class ConcertsScreen extends StatelessWidget {
               'すみやグッディ本店（葵区呉服町）',
               'TEL:054-255-6722',
             ],
+          ),
+          ConcertInfo(
+            title: 'お寺今世音(こんさあと)',
+            date: '2025年11月15日(金)',
+            time: '開場:15:00 開演:16:00',
+            venue: '南叟寺',
+            address: '静岡県静岡市葵区足久保口組 1579',
+            flyerImagePaths: const [
+              'assets/flyers/20251115a.jpg',
+              'assets/flyers/20251115b.jpg',
+            ],
+            programs: [
+              ProgramItem(composer: 'ドビュッシー', pieces: ['映像第1集より「水の反映」']),
+              ProgramItem(composer: 'サティ', pieces: ['ジムノペディ第1番']),
+              ProgramItem(
+                composer: '千原英喜',
+                pieces: ['星月夜34の音の画集より「夕暮れ時は逢魔が時」'],
+              ),
+              ProgramItem(composer: 'ラヴェル', pieces: ['亡き王女のためのパヴァーヌ']),
+              ProgramItem(composer: '南こうせつ', pieces: ['まごころに生きる']),
+              ProgramItem(composer: 'カプースチン', pieces: ['演奏会用エチュード第3番トッカティーナ']),
+              ProgramItem(
+                composer: '吉松隆',
+                pieces: ['プレイアデス舞曲集Ⅱより「鳥のいる間奏曲」', 'プレイアデス舞曲集Ⅴより「夕暮れのアラベスク」'],
+              ),
+              ProgramItem(composer: 'ドビュッシー', pieces: ['ベルガマスク組曲より「月の光」']),
+              ProgramItem(
+                composer: 'ムソルグスキー',
+                pieces: ['展覧会の絵より「鶏の足の上に建っている小屋(バーバ・ヤガー)「キエフの大きな門」'],
+              ),
+            ],
+            ticketPrice: '入場無料 要入場券 (未就学児入場可･無くなり次第終了となります)',
+            ticketInfo: 'チケットの入手場所はこちらから:',
+            ticketOptions: ['すみやグッディ本店 (呉服町)', 'Google Forms (当日受付にて入場券お渡し)'],
           ),
         ],
       ),
