@@ -1,7 +1,14 @@
 import 'package:flutter/services.dart';
 import 'dart:convert';
 
+/// ギャラリー画像をロードするためのサービスクラス。
+///
+/// AssetManifest.jsonを使用して動的にギャラリー画像を取得します。
 class GalleryService {
+  /// ギャラリー画像のパス一覧をロードします。
+  ///
+  /// 返り値: 画像パスのリスト
+  /// エラー時にはデフォルト画像を返します。
   static Future<List<String>> loadGalleryImages() async {
     try {
       // AssetManifestから画像一覧を取得
@@ -29,6 +36,9 @@ class GalleryService {
     }
   }
 
+  /// デフォルト画像のリストを取得します。
+  ///
+  /// エラー発生時や画像が見つからない場合に使用されます。
   static List<String> _getDefaultImages() {
     // デフォルト画像のリスト（実際にあるファイルに合わせて調整）
     return [

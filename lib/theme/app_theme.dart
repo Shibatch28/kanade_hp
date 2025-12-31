@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+/// アプリケーションのテーマを定義するクラス。
+///
+/// シックなカラーパレットとGoogle Fontsを使用した
+/// ライトテーマを提供します。
 class AppTheme {
-  // シックなカラーパレット
+  /// プライマリブラック
   static const Color primaryBlack = Color(0xFF1A1A1A);
+  /// プライマリホワイト
   static const Color primaryWhite = Color(0xFFFAFAFA);
+  /// チャコール
   static const Color charcoal = Color(0xFF2C2C2C);
+  /// ライトグレー
   static const Color lightGrey = Color(0xFFE8E8E8);
+  /// ミディアムグレー
   static const Color mediumGrey = Color(0xFF707070);
+  /// ダークグレー
   static const Color darkGrey = Color(0xFF3A3A3A);
 
-  // ライトテーマ
+  /// ライトテーマの定義
   static ThemeData get lightTheme {
     // 事前にテキストテーマを作成
     final textTheme = GoogleFonts.zenMaruGothicTextTheme();

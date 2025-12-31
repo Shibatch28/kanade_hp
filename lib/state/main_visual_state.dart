@@ -1,3 +1,6 @@
+/// メインビジュアルの状態を保持するクラス。
+///
+/// 画像パスのリスト、現在のインデックス、ロード中フラグを管理します。
 class MainVisualState {
   final List<String> imagePaths;
   final int currentIndex;
@@ -9,6 +12,7 @@ class MainVisualState {
     this.isLoading = true,
   });
 
+  /// プロパティの一部を変更した新しいインスタンスを生成します。
   MainVisualState copyWith({
     List<String>? imagePaths,
     int? currentIndex,

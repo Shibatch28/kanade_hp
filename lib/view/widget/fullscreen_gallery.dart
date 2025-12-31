@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// フルスクリーンギャラリーを表示するウィジェット。
+///
+/// 画像をフルスクリーンで表示し、ページナビゲーションを提供します。
 class FullscreenGallery extends StatefulWidget {
   final List<String> imageAssets;
   final int initialIndex;
@@ -117,6 +120,7 @@ class _FullscreenGalleryState extends State<FullscreenGallery> {
     );
   }
 
+  /// コントロールボタンを構築します。
   Widget _buildControlButton({
     required IconData icon,
     required VoidCallback onTap,
@@ -142,6 +146,7 @@ class _FullscreenGalleryState extends State<FullscreenGallery> {
     );
   }
 
+  /// インジケーターを構築します。
   Widget _buildIndicator() {
     final totalDots = widget.imageAssets.length;
     final maxDotsPerRow = 15; // 1行あたりの最大ドット数
@@ -203,6 +208,7 @@ class _FullscreenGalleryState extends State<FullscreenGallery> {
     );
   }
 
+  /// インジケーターのドットを構築します。
   Widget _buildDot(bool isActive) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
@@ -227,6 +233,7 @@ class _FullscreenGalleryState extends State<FullscreenGallery> {
     );
   }
 
+  /// 前の画像に移動します。
   void _previousImage() {
     if (currentIndex > 0) {
       _pageController.previousPage(
@@ -236,6 +243,7 @@ class _FullscreenGalleryState extends State<FullscreenGallery> {
     }
   }
 
+  /// 次の画像に移動します。
   void _nextImage() {
     if (currentIndex < widget.imageAssets.length - 1) {
       _pageController.nextPage(

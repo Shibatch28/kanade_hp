@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:kanade_hp/theme/app_theme.dart';
 import 'package:kanade_hp/utils/responsive.dart';
 
+/// 年表アイテムを表示するウィジェット。
+///
+/// 年、月、日、タイトル、説明、画像を含むタイムライン形式のアイテムです。
 class ChronologyItem extends StatelessWidget {
   final String year;
   final String month;
@@ -34,6 +37,7 @@ class ChronologyItem extends StatelessWidget {
     }
   }
 
+  /// モバイル用のレイアウトを構築します。
   Widget _buildModileLayout(BuildContext context, bool isMobile) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -47,6 +51,7 @@ class ChronologyItem extends StatelessWidget {
     );
   }
 
+  /// デスクトップ用のレイアウトを構築します。
   Widget _buildDesktopLayout(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 40),
@@ -131,7 +136,7 @@ class ChronologyItem extends StatelessWidget {
     );
   }
 
-  /// タイムラインのヘッダ (年と月日) を構築
+  /// タイムラインのヘッダ（年と月日）を構築します。
   Widget _buildTimelineHeader(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -165,7 +170,7 @@ class ChronologyItem extends StatelessWidget {
     );
   }
 
-  /// 画像コンテンツを構築
+  /// 画像コンテンツを構築します。
   Widget _buildImageContent(bool isMobile) {
     return Padding(
       padding:
@@ -194,7 +199,7 @@ class ChronologyItem extends StatelessWidget {
     );
   }
 
-  /// テキストコンテンツを構築
+  /// テキストコンテンツを構築します。
   Widget _buildTextContent(BuildContext context, bool isMobile) {
     return Padding(
       padding:

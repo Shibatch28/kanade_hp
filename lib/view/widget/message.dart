@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// ウェルカムメッセージを表示するウィジェット。
+///
+/// タイトルとメッセージを含むセクションを表示します。
 class WelcomeMessage extends StatelessWidget {
   // 表示したいタイトルとメッセージをコンストラクタで受け取る
   final String title;

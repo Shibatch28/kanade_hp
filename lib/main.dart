@@ -6,6 +6,10 @@ import "package:kanade_hp/router/app_router.dart";
 import "theme/app_theme.dart";
 import "cubit/navigation_cubit.dart";
 
+/// アプリケーションのエントリーポイント。
+///
+/// Flutterバインディングを初期化し、Google Fontsを事前読み込みしてから
+/// アプリケーションを起動します。
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -14,6 +18,10 @@ void main() async {
   runApp(const MyApp());
 }
 
+/// アプリケーションのルートウィジェット。
+///
+/// MaterialAppとBlocProviderを設定し、アプリケーション全体の
+/// ナビゲーション状態管理とテーマを提供します。
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 

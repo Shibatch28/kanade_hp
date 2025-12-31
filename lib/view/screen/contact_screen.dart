@@ -3,6 +3,9 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:kanade_hp/theme/app_theme.dart';
 import 'package:kanade_hp/view/widget/main_visual.dart';
 
+/// お問い合わせ画面を表示するウィジェット。
+///
+/// メールでのお問い合わせ情報を提供します。
 class ContactScreen extends StatelessWidget {
   const ContactScreen({super.key});
 
@@ -38,6 +41,7 @@ class ContactScreen extends StatelessWidget {
     );
   }
 
+  /// メールでのお問い合わせセクションを構築します。
   Widget _buildEmailSection(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -94,6 +98,7 @@ class ContactScreen extends StatelessWidget {
     );
   }
 
+  /// メール送信ボタンを構築します。
   Widget _buildSendMailButton(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
@@ -131,6 +136,7 @@ class ContactScreen extends StatelessWidget {
     );
   }
 
+  /// メーラーを起動してお問い合わせメールを送信します。
   Future<void> _launchEmail() async {
     final Uri emailUri = Uri(
       scheme: 'mailto',
@@ -149,10 +155,12 @@ class ContactScreen extends StatelessWidget {
     }
   }
 
+  /// メーラーが利用できない場合のダイアログを表示します。
   void _showEmailNotAvailableDialog() {
     // メーラーが利用できない場合の処理
   }
 
+  /// エラー時のダイアログを表示します。
   void _showEmailErrorDialog() {
     // エラー時のダイアログ表示
   }

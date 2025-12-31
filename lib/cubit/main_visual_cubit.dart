@@ -3,9 +3,17 @@ import 'package:flutter/services.dart';
 import 'package:kanade_hp/state/main_visual_state.dart';
 import 'dart:convert';
 
+/// メインビジュアルの画像スライダーを管理するCubit。
+///
+/// 指定されたディレクトリから画像を読み込み、スライダーの
+/// 現在のインデックスや画像パスを管理します。
 class MainVisualCubit extends Cubit<MainVisualState> {
   MainVisualCubit() : super(const MainVisualState());
 
+  /// 指定されたディレクトリから画像をロードします。
+  ///
+  /// [directoryPath] - assets配下の画像ディレクトリパス
+  /// AssetManifest.jsonを使用して動的に画像を取得します。
   Future<void> loadImages(String directoryPath) async {
     try {
       // assets/main_visual/フォルダから画像ファイルを動的に取得
@@ -37,6 +45,9 @@ class MainVisualCubit extends Cubit<MainVisualState> {
     }
   }
 
+  /// 次の画像に移動します。
+  ///
+  /// 最後の画像の場合は最初の画像に戻ります。
   void nextImage() {
     if (state.imagePaths.isEmpty) return;
 
@@ -48,6 +59,9 @@ class MainVisualCubit extends Cubit<MainVisualState> {
     emit(state.copyWith(currentIndex: newIndex));
   }
 
+  /// 前の画像に移動します。
+  ///
+  /// 最初の画像の場合は最後の画像に移動します。
   void previousImage() {
     if (state.imagePaths.isEmpty) return;
 
@@ -59,6 +73,9 @@ class MainVisualCubit extends Cubit<MainVisualState> {
     emit(state.copyWith(currentIndex: newIndex));
   }
 
+  /// 指定されたインデックスの画像を表示します。
+  ///
+  /// [index] - 表示する画像のインデックス（0以上、画像数未満）
   void setCurrentIndex(int index) {
     if (index >= 0 && index < state.imagePaths.length) {
       emit(state.copyWith(currentIndex: index));

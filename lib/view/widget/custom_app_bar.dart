@@ -4,6 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kanade_hp/cubit/navigation_cubit.dart';
 import 'package:kanade_hp/state/navigation_state.dart';
 
+/// アプリケーションのカスタムAppBarウィジェット。
+///
+/// ロゴとナビゲーションメニューを含みます。
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final ScreenType currentScreen;
 
@@ -38,6 +41,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
+  /// ナビゲーションメニューを表示します。
   void _showNavigationMenu(BuildContext context) {
     // NavigationCubitのインスタンスを事前に取得
     final navigationCubit = context.read<NavigationCubit>();
@@ -86,6 +90,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
+  /// メニューアイテムを構築します。
   Widget _buildMenuItem(
     NavigationCubit navigationCubit,
     BuildContext context,

@@ -10,6 +10,9 @@ import 'package:kanade_hp/view/screen/home_screen.dart';
 import 'package:kanade_hp/view/widget/custom_app_bar.dart';
 import 'package:kanade_hp/view/widget/custom_footer.dart';
 
+/// メイン画面のレイアウトを管理するウィジェット。
+///
+/// AppBar、コンテンツ、Footerを含む全体のレイアウトを提供します。
 class MainScreen extends StatelessWidget {
   final String initialPage;
 
@@ -48,6 +51,7 @@ class MainScreen extends StatelessWidget {
     );
   }
 
+  /// 現在の画面タイプに応じた画面を返します。
   Widget _buildCurrentScreen(ScreenType screenType) {
     switch (screenType) {
       case ScreenType.home:
