@@ -16,11 +16,14 @@ class ConcertsScreen extends StatelessWidget {
           MainVisual(title: 'コンサート情報', imageDirectory: 'concerts', height: 200),
           ConcertInfo(
             title: 'お寺今世音(こんさあと)',
-            date: '2025年12月5日(金)',
+            date: '2025年11月15日(金)',
             time: '開場:15:00 開演:16:00',
             venue: '南叟寺',
             address: '静岡県静岡市葵区足久保口組 1579',
-            flyerImagePath: 'assets/flyers/20251115a.jpg',
+            flyerImagePaths: const [
+              'assets/flyers/20251115a.jpg',
+              'assets/flyers/20251115b.jpg',
+            ],
             programs: [
               ProgramItem(composer: 'ドビュッシー', pieces: ['映像第1集より「水の反映」']),
               ProgramItem(composer: 'サティ', pieces: ['ジムノペディ第1番']),
@@ -51,7 +54,10 @@ class ConcertsScreen extends StatelessWidget {
             time: '開場:18:15 開演:19:00',
             venue: '下北沢アレイホール',
             address: '東京都世田谷区北沢2丁目24-8 下北沢アレイ 3F',
-            flyerImagePath: 'assets/flyers/20251205a.jpeg',
+            flyerImagePaths: const [
+              'assets/flyers/20251205a.jpeg',
+              'assets/flyers/20251205b.jpeg',
+            ],
             programs: [
               ProgramItem(
                 composer: 'ベートーヴェン',
@@ -79,7 +85,7 @@ class ConcertsScreen extends StatelessWidget {
             time: '開場:13:20 開演:14:00',
             venue: '江崎ホール',
             address: '静岡市葵区七間町8-20 毎日江崎ビル9階',
-            flyerImagePath: 'assets/flyers/flyer_C.png',
+            flyerImagePaths: const ['assets/flyers/flyer_C.png'],
             programs: [
               ProgramItem(
                 composer: 'ショパン',
