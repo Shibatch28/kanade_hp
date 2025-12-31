@@ -4,6 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kanade_hp/cubit/main_visual_cubit.dart';
 import 'package:kanade_hp/state/main_visual_state.dart';
 
+/// メインビジュアル画像スライダーを表示するウィジェット。
+///
+/// 指定されたディレクトリから画像を読み込み、スライドショーとして表示します。
 class MainVisual extends StatelessWidget {
   final double? height; // 高さを指定可能にする
   final String title; // タイトルを指定可能にする
@@ -211,6 +214,7 @@ class _MainVisualContentState extends State<_MainVisualContent> {
   }
 }
 
+/// メインビジュアルの内部コンテンツウィジェット。
 class _MainVisualContent extends StatefulWidget {
   final double? height; // 高さパラメータを追加
   final String? title;

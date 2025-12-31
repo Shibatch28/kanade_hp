@@ -1,6 +1,9 @@
 import 'package:go_router/go_router.dart';
 import 'package:kanade_hp/view/screen/main_screen.dart';
 
+/// アプリケーションのルーティング設定を提供するクラス。
+///
+/// GoRouterを使用して各画面へのルーティングを定義します。
 class AppRouter {
   static final GoRouter _router = GoRouter(
     initialLocation: '/',
@@ -33,5 +36,6 @@ class AppRouter {
     ],
   );
 
+  /// GoRouterインスタンスを取得します。
   static GoRouter get router => _router;
 }

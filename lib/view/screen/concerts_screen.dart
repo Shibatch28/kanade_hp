@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:kanade_hp/view/widget/concert_info.dart';
 import "package:kanade_hp/view/widget/main_visual.dart";
 
+/// 演奏会情報画面を表示するウィジェット。
+///
+/// 今後の演奏会と過去の演奏会情報を表示します。
 class ConcertsScreen extends StatelessWidget {
   const ConcertsScreen({super.key});
 

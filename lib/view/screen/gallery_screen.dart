@@ -4,6 +4,9 @@ import 'package:kanade_hp/view/widget/gallery_grid.dart';
 import 'package:kanade_hp/service/gallery_service.dart';
 import 'package:kanade_hp/view/widget/main_visual.dart';
 
+/// ギャラリー画面を表示するウィジェット。
+///
+/// 画像ギャラリーをグリッド形式で表示します。
 class GalleryScreen extends StatefulWidget {
   const GalleryScreen({super.key});
 
@@ -21,6 +24,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
     _loadGalleryImages();
   }
 
+  /// ギャラリー画像をロードします。
   Future<void> _loadGalleryImages() async {
     final images = await GalleryService.loadGalleryImages();
     setState(() {

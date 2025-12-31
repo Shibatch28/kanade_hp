@@ -3,6 +3,9 @@ import 'package:kanade_hp/theme/app_theme.dart';
 import 'package:kanade_hp/view/widget/gallery_item.dart';
 import 'package:kanade_hp/view/widget/fullscreen_gallery.dart';
 
+/// ギャラリー画像をグリッド形式で表示するウィジェット。
+///
+/// 画面サイズに応じてグリッドのカラム数を調整します。
 class GalleryGrid extends StatelessWidget {
   final List<String> imageAssets;
   final bool isLoading;
@@ -76,6 +79,7 @@ class GalleryGrid extends StatelessWidget {
     );
   }
 
+  /// フルスクリーン画像ビューアーを表示します。
   void _showFullscreenImage(BuildContext context, int index) {
     showDialog(
       context: context,

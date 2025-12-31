@@ -3,6 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kanade_hp/view/widget/chronology_item.dart';
 import 'package:kanade_hp/view/widget/main_visual.dart';
 
+/// プロフィール画面（足跡）を表示するウィジェット。
+///
+/// メインビジュアルと年表セクションを含みます。
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
 
@@ -109,6 +112,7 @@ class AboutScreen extends StatelessWidget {
     );
   }
 
+  /// 年表セクションを構築します。
   Widget _buildChronologySection() {
     return Container(
       color: const Color(0xFFFAFAFA),

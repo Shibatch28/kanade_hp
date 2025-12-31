@@ -4,6 +4,9 @@ import 'package:kanade_hp/models/social_link.dart';
 import 'package:kanade_hp/utils/responsive.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+/// アプリケーションのフッターウィジェット。
+///
+/// SNSリンクと著作権情報を表示します。
 class CustomFooter extends StatelessWidget {
   const CustomFooter({super.key});
 
@@ -30,6 +33,7 @@ class CustomFooter extends StatelessWidget {
     );
   }
 
+  /// 全てのSNSリンクを構築します。
   Widget _buildAllSocialLinks(bool isMobile) {
     if (isMobile) {
       // モバイル: 縦並び
@@ -60,7 +64,7 @@ class CustomFooter extends StatelessWidget {
     }
   }
 
-  /// SNSリンクのウィジェットを生成する
+  /// SNSリンクのウィジェットを生成します。
   Widget _buildSocialLink({required SocialLink linkData}) {
     return GestureDetector(
       onTap: () => _launchUrl(linkData.url),
@@ -84,6 +88,7 @@ class CustomFooter extends StatelessWidget {
     );
   }
 
+  /// 著作権表示を構築します。
   Widget _buildCopyright(bool isMobile) {
     if (isMobile) {
       // モバイル：縦並び、小さいフォント

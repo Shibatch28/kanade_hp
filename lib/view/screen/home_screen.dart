@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import "package:kanade_hp/view/widget/main_visual.dart";
 
+/// ホーム画面を表示するウィジェット。
+///
+/// メインビジュアルを表示します。
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 

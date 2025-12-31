@@ -1,12 +1,17 @@
 import 'package:equatable/equatable.dart';
 
+/// 画面の種類を表す列挙型。
 enum ScreenType { home, about, concerts, gallery, contact }
 
+/// ナビゲーション状態を保持するクラス。
+///
+/// 現在表示中の画面を管理し、URLパスとの変換を提供します。
 class NavigationState extends Equatable {
   final ScreenType currentScreen;
 
   const NavigationState({this.currentScreen = ScreenType.home});
 
+  /// プロパティの一部を変更した新しいインスタンスを生成します。
   NavigationState copyWith({ScreenType? currentScreen}) {
     return NavigationState(currentScreen: currentScreen ?? this.currentScreen);
   }
@@ -14,7 +19,7 @@ class NavigationState extends Equatable {
   @override
   List<Object> get props => [currentScreen];
 
-  // URLパスを取得
+  /// 現在の画面に対応するURLパスを取得します。
   String get currentPath {
     switch (currentScreen) {
       case ScreenType.home:
@@ -30,7 +35,10 @@ class NavigationState extends Equatable {
     }
   }
 
-  // URLパスからScreenTypeを取得
+  /// URLパスからScreenTypeを取得します。
+  ///
+  /// [path] - URLパス（例: '/', '/about', '/concerts'）
+  /// 返り値: 対応するScreenType（不明な場合はhome）
   static ScreenType screenTypeFromPath(String path) {
     switch (path) {
       case '/':

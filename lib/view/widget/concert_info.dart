@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:kanade_hp/theme/app_theme.dart';
 import 'package:kanade_hp/utils/responsive.dart';
 
+/// 演奏会情報を表示するウィジェット。
+///
+/// 演奏会の詳細情報、プログラム、チケット情報を表示します。
 class ConcertInfo extends StatelessWidget {
   final String title;
   final String date;
@@ -44,6 +47,7 @@ class ConcertInfo extends StatelessWidget {
     );
   }
 
+  /// タイトルセクションを構築します。
   Widget _buildTitle(BuildContext context) {
     return Text(
       title,
@@ -55,6 +59,7 @@ class ConcertInfo extends StatelessWidget {
     );
   }
 
+  /// メインコンテンツ（画像と情報）を構築します。
   Widget _buildMainContent(BuildContext context) {
     final isMobile = Responsive.isMobile(context);
 
@@ -106,6 +111,7 @@ class ConcertInfo extends StatelessWidget {
     );
   }
 
+  /// イベントの詳細情報（日時、会場）を構築します。
   Widget _buildEventDetails(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,6 +123,7 @@ class ConcertInfo extends StatelessWidget {
     );
   }
 
+  /// 詳細情報の個別アイテムを構築します。
   Widget _buildDetailItem(BuildContext context, String label, String content) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -140,6 +147,7 @@ class ConcertInfo extends StatelessWidget {
     );
   }
 
+  /// フライヤー画像を構築します。
   Widget _buildFlyerImage() {
     return Container(
       decoration: BoxDecoration(
@@ -159,6 +167,7 @@ class ConcertInfo extends StatelessWidget {
     );
   }
 
+  /// プログラムセクションを構築します。
   Widget _buildProgramSection(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -176,6 +185,7 @@ class ConcertInfo extends StatelessWidget {
     );
   }
 
+  /// プログラムの個別アイテムを構築します。
   Widget _buildProgramItem(BuildContext context, ProgramItem program) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
@@ -220,6 +230,7 @@ class ConcertInfo extends StatelessWidget {
     );
   }
 
+  /// チケット情報セクションを構築します。
   Widget _buildTicketSection(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -272,6 +283,7 @@ class ConcertInfo extends StatelessWidget {
   }
 }
 
+/// 演奏会のプログラムアイテムを表すクラス。
 class ProgramItem {
   final String composer;
   final List<String> pieces;

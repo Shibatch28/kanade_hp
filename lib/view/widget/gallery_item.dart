@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kanade_hp/theme/app_theme.dart';
 
+/// ギャラリーの個別アイテムを表示するウィジェット。
+///
+/// 画像をサムネイル形式で表示し、タップでフルスクリーン表示します。
 class GalleryItem extends StatelessWidget {
   final String imagePath;
   final int index;
