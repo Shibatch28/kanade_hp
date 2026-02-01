@@ -1,11 +1,10 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:kanade_hp/theme/app_theme.dart';
 import 'package:kanade_hp/utils/responsive.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 /// 演奏会情報を表示するウィジェット。
-///
-/// 演奏会の詳細情報、プログラム、チケット情報を表示します。
-/// 複数のフライヤー画像がある場合は、矢印ボタンで切り替えられます。
 class ConcertInfo extends StatefulWidget {
   final String title;
   final String date;
@@ -17,6 +16,7 @@ class ConcertInfo extends StatefulWidget {
   final String ticketPrice;
   final String ticketInfo;
   final List<String> ticketOptions;
+  final String additionalInfo; // finalを推奨するため追加しましたが、元のままでも動作します
 
   const ConcertInfo({
     super.key,
@@ -30,6 +30,7 @@ class ConcertInfo extends StatefulWidget {
     required this.ticketPrice,
     required this.ticketInfo,
     required this.ticketOptions,
+    this.additionalInfo = '',
   });
 
   @override
@@ -62,11 +63,7 @@ class _ConcertInfoState extends State<ConcertInfo> {
       padding: const EdgeInsets.all(40),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          _buildTitle(context),
-          const SizedBox(height: 40),
-          _buildMainContent(context), // ここにすべてが含まれるようになります
-        ],
+        children: [_buildTitle(context), const SizedBox(height: 40), _buildMainContent(context)],
       ),
     );
   }
@@ -100,6 +97,9 @@ class _ConcertInfoState extends State<ConcertInfo> {
           _buildProgramSection(context),
           const SizedBox(height: 40),
           _buildTicketSection(context),
+          // 追加: 追加情報セクション
+          const SizedBox(height: 40),
+          _buildAdditionalInfoSection(context),
         ],
       );
     }
@@ -117,7 +117,7 @@ class _ConcertInfoState extends State<ConcertInfo> {
             ),
           ),
         if (widget.flyerImagePaths.isNotEmpty) const SizedBox(width: 40),
-        // 右側：日時・会場情報 + プログラム + チケット情報
+        // 右側：日時・会場情報 + プログラム + チケット情報 + 追加情報
         Expanded(
           flex: 3,
           child: Column(
@@ -128,12 +128,17 @@ class _ConcertInfoState extends State<ConcertInfo> {
               _buildProgramSection(context),
               const SizedBox(height: 40),
               _buildTicketSection(context),
+              // 追加: 追加情報セクション
+              const SizedBox(height: 40),
+              _buildAdditionalInfoSection(context),
             ],
           ),
         ),
       ],
     );
   }
+
+  // ... (途中省略: _buildEventDetails, _buildFlyerImageSection, _buildProgramSection などは変更なし) ...
 
   /// イベントの詳細情報（日時、会場）を構築します。
   Widget _buildEventDetails(BuildContext context) {
@@ -147,7 +152,6 @@ class _ConcertInfoState extends State<ConcertInfo> {
     );
   }
 
-  /// 詳細情報の個別アイテムを構築します。
   Widget _buildDetailItem(BuildContext context, String label, String content) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -162,27 +166,22 @@ class _ConcertInfoState extends State<ConcertInfo> {
         const SizedBox(height: 8),
         Text(
           content,
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            color: AppTheme.darkGrey,
-            height: 1.6,
-          ),
+          style: Theme.of(
+            context,
+          ).textTheme.bodyLarge?.copyWith(color: AppTheme.darkGrey, height: 1.6),
         ),
       ],
     );
   }
 
-  /// フライヤー画像セクションを構築します（複数画像に対応）。
   Widget _buildFlyerImageSection() {
     if (widget.flyerImagePaths.isEmpty) {
       return const SizedBox.shrink();
     }
-
     final hasMultipleImages = widget.flyerImagePaths.length > 1;
-
     return Stack(
       alignment: Alignment.center,
       children: [
-        // 画像
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
@@ -196,47 +195,27 @@ class _ConcertInfoState extends State<ConcertInfo> {
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8),
-            child: Image.asset(
-              widget.flyerImagePaths[_currentImageIndex],
-              fit: BoxFit.contain,
-            ),
+            child: Image.asset(widget.flyerImagePaths[_currentImageIndex], fit: BoxFit.contain),
           ),
         ),
-        // 左矢印ボタン
         if (hasMultipleImages && _currentImageIndex > 0)
           Positioned(
             left: 8,
-            child: _buildNavigationButton(
-              icon: Icons.chevron_left,
-              onPressed: _previousImage,
-            ),
+            child: _buildNavigationButton(icon: Icons.chevron_left, onPressed: _previousImage),
           ),
-        // 右矢印ボタン
-        if (hasMultipleImages &&
-            _currentImageIndex < widget.flyerImagePaths.length - 1)
+        if (hasMultipleImages && _currentImageIndex < widget.flyerImagePaths.length - 1)
           Positioned(
             right: 8,
-            child: _buildNavigationButton(
-              icon: Icons.chevron_right,
-              onPressed: _nextImage,
-            ),
+            child: _buildNavigationButton(icon: Icons.chevron_right, onPressed: _nextImage),
           ),
-        // インジケーター
         if (hasMultipleImages) Positioned(bottom: 16, child: _buildIndicator()),
       ],
     );
   }
 
-  /// ナビゲーションボタンを構築します。
-  Widget _buildNavigationButton({
-    required IconData icon,
-    required VoidCallback onPressed,
-  }) {
+  Widget _buildNavigationButton({required IconData icon, required VoidCallback onPressed}) {
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.4),
-        shape: BoxShape.circle,
-      ),
+      decoration: BoxDecoration(color: Colors.white.withValues(alpha: 0.4), shape: BoxShape.circle),
       child: IconButton(
         icon: Icon(icon, color: AppTheme.primaryBlack),
         onPressed: onPressed,
@@ -245,7 +224,6 @@ class _ConcertInfoState extends State<ConcertInfo> {
     );
   }
 
-  /// 画像インジケーターを構築します。
   Widget _buildIndicator() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
@@ -264,9 +242,7 @@ class _ConcertInfoState extends State<ConcertInfo> {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color:
-                  index == _currentImageIndex
-                      ? Colors.white
-                      : Colors.white.withValues(alpha: 0.5),
+                  index == _currentImageIndex ? Colors.white : Colors.white.withValues(alpha: 0.5),
             ),
           ),
         ),
@@ -274,8 +250,10 @@ class _ConcertInfoState extends State<ConcertInfo> {
     );
   }
 
-  /// プログラムセクションを構築します。
   Widget _buildProgramSection(BuildContext context) {
+    if (!widget.programs.isNotEmpty) {
+      return const SizedBox.shrink();
+    }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -287,14 +265,11 @@ class _ConcertInfoState extends State<ConcertInfo> {
           ),
         ),
         const SizedBox(height: 20),
-        ...widget.programs.map(
-          (program) => _buildProgramItem(context, program),
-        ),
+        ...widget.programs.map((program) => _buildProgramItem(context, program)),
       ],
     );
   }
 
-  /// プログラムの個別アイテムを構築します。
   Widget _buildProgramItem(BuildContext context, ProgramItem program) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
@@ -324,10 +299,9 @@ class _ConcertInfoState extends State<ConcertInfo> {
                   Expanded(
                     child: Text(
                       piece,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: AppTheme.darkGrey,
-                        height: 1.6,
-                      ),
+                      style: Theme.of(
+                        context,
+                      ).textTheme.bodyLarge?.copyWith(color: AppTheme.darkGrey, height: 1.6),
                     ),
                   ),
                 ],
@@ -356,10 +330,9 @@ class _ConcertInfoState extends State<ConcertInfo> {
         const SizedBox(height: 20),
         Text(
           widget.ticketInfo,
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            color: AppTheme.darkGrey,
-            height: 1.6,
-          ),
+          style: Theme.of(
+            context,
+          ).textTheme.bodyLarge?.copyWith(color: AppTheme.darkGrey, height: 1.6),
         ),
         const SizedBox(height: 12),
         ...widget.ticketOptions.map(
@@ -370,17 +343,15 @@ class _ConcertInfoState extends State<ConcertInfo> {
               children: [
                 Text(
                   '• ',
-                  style: Theme.of(
-                    context,
-                  ).textTheme.bodyLarge?.copyWith(color: AppTheme.darkGrey),
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppTheme.darkGrey),
                 ),
                 Expanded(
-                  child: Text(
+                  child: _buildMarkdownText(
+                    context,
                     option,
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: AppTheme.darkGrey,
-                      height: 1.6,
-                    ),
+                    Theme.of(
+                      context,
+                    ).textTheme.bodyLarge?.copyWith(color: AppTheme.darkGrey, height: 1.6),
                   ),
                 ),
               ],
@@ -389,6 +360,75 @@ class _ConcertInfoState extends State<ConcertInfo> {
         ),
       ],
     );
+  }
+
+  /// 追加: 追加情報セクションを構築します。
+  Widget _buildAdditionalInfoSection(BuildContext context) {
+    // 情報が空なら表示しない
+    if (widget.additionalInfo.isEmpty) {
+      return const SizedBox.shrink();
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          '追加情報',
+          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: AppTheme.primaryBlack,
+          ),
+        ),
+        const SizedBox(height: 20),
+        // 通常テキストとリンクに対応させるためMarkdownメソッドを使用
+        _buildMarkdownText(
+          context,
+          widget.additionalInfo,
+          Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppTheme.darkGrey, height: 1.6),
+        ),
+      ],
+    );
+  }
+
+  /// [リンク名](URL) 形式の文字列を解析し、リンク付きのRichTextを返す
+  Widget _buildMarkdownText(BuildContext context, String text, TextStyle? style) {
+    final RegExp linkRegExp = RegExp(r'\[([^\]]+)\]\(([^)]+)\)');
+    final List<InlineSpan> spans = [];
+    int start = 0;
+
+    for (final Match match in linkRegExp.allMatches(text)) {
+      if (match.start > start) {
+        spans.add(TextSpan(text: text.substring(start, match.start), style: style));
+      }
+
+      final String linkText = match.group(1)!;
+      final String url = match.group(2)!;
+
+      spans.add(
+        TextSpan(
+          text: linkText,
+          style: style?.copyWith(color: Colors.grey, decoration: TextDecoration.underline),
+          recognizer:
+              TapGestureRecognizer()
+                ..onTap = () async {
+                  final Uri uri = Uri.parse(url);
+                  if (await canLaunchUrl(uri)) {
+                    await launchUrl(uri);
+                  } else {
+                    debugPrint('Could not launch $url');
+                  }
+                },
+        ),
+      );
+
+      start = match.end;
+    }
+
+    if (start < text.length) {
+      spans.add(TextSpan(text: text.substring(start), style: style));
+    }
+
+    return RichText(text: TextSpan(children: spans));
   }
 }
 
