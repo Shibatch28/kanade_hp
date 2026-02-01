@@ -42,8 +42,7 @@ class ChronologyItem extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        if (showYear || month.isNotEmpty || day.isNotEmpty)
-          _buildTimelineHeader(context),
+        if (showYear || month.isNotEmpty || day.isNotEmpty) _buildTimelineHeader(context),
         if (imagePath != null) _buildImageContent(isMobile),
         _buildTextContent(context, isMobile),
         const SizedBox(height: 30),
@@ -58,8 +57,7 @@ class ChronologyItem extends StatelessWidget {
       child: Column(
         children: [
           // 年と月日の表示
-          if (showYear || month.isNotEmpty || day.isNotEmpty)
-            _buildTimelineHeader(context),
+          if (showYear || month.isNotEmpty || day.isNotEmpty) _buildTimelineHeader(context),
 
           const SizedBox(height: 15),
 
@@ -147,7 +145,7 @@ class ChronologyItem extends StatelessWidget {
             child: Text(
               year,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontSize: Responsive.isMobile(context) ? 48 : 48,
+                fontSize: Responsive.isMobile(context) ? 32 : 48,
                 fontWeight: FontWeight.bold,
                 color: AppTheme.primaryBlack,
               ),
@@ -217,14 +215,11 @@ class ChronologyItem extends StatelessWidget {
           // タイトル
           Text(
             title,
-            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
               fontWeight: FontWeight.w700,
               color: AppTheme.charcoal,
             ),
-            textAlign:
-                isMobile
-                    ? TextAlign.center
-                    : (isLeft ? TextAlign.right : TextAlign.left),
+            textAlign: isMobile ? TextAlign.center : (isLeft ? TextAlign.right : TextAlign.left),
           ),
 
           const SizedBox(height: 12),
@@ -233,13 +228,8 @@ class ChronologyItem extends StatelessWidget {
           if (description != null)
             Text(
               description!,
-              style: Theme.of(
-                context,
-              ).textTheme.bodyMedium?.copyWith(color: AppTheme.darkGrey),
-              textAlign:
-                  isMobile
-                      ? TextAlign.center
-                      : (isLeft ? TextAlign.right : TextAlign.left),
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppTheme.darkGrey),
+              textAlign: isMobile ? TextAlign.center : (isLeft ? TextAlign.right : TextAlign.left),
             ),
         ],
       ),
