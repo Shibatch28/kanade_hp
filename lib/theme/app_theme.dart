@@ -8,24 +8,29 @@ import 'package:google_fonts/google_fonts.dart';
 class AppTheme {
   /// プライマリブラック
   static const Color primaryBlack = Color(0xFF1A1A1A);
+
   /// プライマリホワイト
   static const Color primaryWhite = Color(0xFFFAFAFA);
+
   /// チャコール
   static const Color charcoal = Color(0xFF2C2C2C);
+
   /// ライトグレー
   static const Color lightGrey = Color(0xFFE8E8E8);
+
   /// ミディアムグレー
   static const Color mediumGrey = Color(0xFF707070);
+
   /// ダークグレー
   static const Color darkGrey = Color(0xFF3A3A3A);
 
   /// ライトテーマの定義
   static ThemeData get lightTheme {
     // 事前にテキストテーマを作成
-    final textTheme = GoogleFonts.zenMaruGothicTextTheme();
+    final textTheme = GoogleFonts.shipporiMinchoTextTheme();
 
     return ThemeData(
-      fontFamily: GoogleFonts.zenMaruGothic().fontFamily,
+      fontFamily: GoogleFonts.shipporiMincho().fontFamily,
       colorScheme: const ColorScheme.light(
         primary: primaryBlack,
         secondary: charcoal,
@@ -70,7 +75,7 @@ class AppTheme {
         foregroundColor: darkGrey,
         elevation: 0,
         shadowColor: Colors.transparent,
-        titleTextStyle: GoogleFonts.zenMaruGothic(
+        titleTextStyle: GoogleFonts.shipporiMincho(
           color: darkGrey,
           fontSize: 18,
           fontWeight: FontWeight.w500,
@@ -86,17 +91,12 @@ class AppTheme {
           elevation: 0,
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
           shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-          textStyle: GoogleFonts.zenMaruGothic(
-            fontWeight: FontWeight.w500,
-            letterSpacing: 1.0,
-          ),
+          textStyle: GoogleFonts.shipporiMincho(fontWeight: FontWeight.w500, letterSpacing: 1.0),
         ),
       ),
 
       // アイコンボタンのテーマ
-      iconButtonTheme: IconButtonThemeData(
-        style: IconButton.styleFrom(foregroundColor: darkGrey),
-      ),
+      iconButtonTheme: IconButtonThemeData(style: IconButton.styleFrom(foregroundColor: darkGrey)),
 
       // その他のテーマ設定
       scaffoldBackgroundColor: primaryWhite,
