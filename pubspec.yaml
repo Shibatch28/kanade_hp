@@ -75,6 +75,7 @@ flutter:
     - assets/vis_contact/
     - assets/vis_gallery/
     - assets/vis_about/
+    - assets/google_fonts/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
