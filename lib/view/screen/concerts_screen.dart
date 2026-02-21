@@ -15,6 +15,26 @@ class ConcertsScreen extends StatelessWidget {
         children: [
           MainVisual(title: 'コンサート情報', imageDirectory: 'concerts', height: 200),
           ConcertInfo(
+            title: 'お寺今世音 (おてらこんさあと)',
+            date: '2026年3月1日 (日)',
+            time: '開場:14:00 開演:15:00',
+            venue: '南叟寺',
+            address: '静岡県静岡市葵区足久保口組1579',
+            flyerImagePaths: ['assets/flyers/20260301.png'],
+            programs: [
+              ProgramItem(composer: 'ショパン', pieces: ['バラード 第2番']),
+              ProgramItem(composer: '南こうせつ', pieces: ['まごころに生きる']),
+              ProgramItem(composer: 'ヨハン･シュトラウス2世', pieces: ['こうもり']),
+              ProgramItem(composer: 'ベートーヴェン', pieces: ['ピアノソナタ第 14番「月光」嬰ハ短調 作品 27-2']),
+              ProgramItem(composer: 'シベリウス', pieces: ['樹の組曲']),
+            ],
+            ticketPrice: 'チケット無料',
+            ticketInfo: '全席自由席',
+            ticketOptions: [
+              '[Google フォーム](https://docs.google.com/forms/d/e/1FAIpQLSdUAWp2dZ2Tb5BD2PsV8e5BUqOkuQd2YtroMf-pmSeuoxl7ng/viewform?usp=dialog) よりお問い合わせください。',
+            ],
+          ),
+          ConcertInfo(
             title: '木内伶奈×近藤奏 ピアノデュオリサイタル',
             date: '2026年3月7日 (土)',
             time: '開場:14:00 開演:14:30',
