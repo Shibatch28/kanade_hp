@@ -15,6 +15,24 @@ class ConcertsScreen extends StatelessWidget {
         children: [
           MainVisual(title: 'コンサート情報', imageDirectory: 'concerts', height: 200),
           ConcertInfo(
+            title: '木内伶奈×近藤奏 ピアノデュオリサイタル',
+            date: '2026年3月7日 (土)',
+            time: '開場:14:00 開演:14:30',
+            venue: '長野県佐久平交流センター',
+            address: '長野県佐久市佐久平駅南4-1',
+            flyerImagePaths: ['assets/flyers/20260307a.jpg', 'assets/flyers/20260307b.jpg'],
+            programs: [
+              ProgramItem(composer: 'ショパン', pieces: ['スケルツォ第1番 Op.20']),
+              ProgramItem(composer: 'ブラームス', pieces: ['6つの小品 Op.118']),
+              ProgramItem(composer: 'カプースチン', pieces: ['シンフォニエッタ Op.49']),
+            ],
+            ticketPrice: '一般 2,500円 / 高校生以下 1,000円',
+            ticketInfo: 'Google フォームにてお問い合わせください。',
+            ticketOptions: [
+              '[Google フォーム](https://docs.google.com/forms/d/e/1FAIpQLSdx9yYdpqWf530hHoCXGttBW-YZyLSABzLSc8ZdH_z6EC7RBQ/viewform)',
+            ],
+          ),
+          ConcertInfo(
             title: '近藤奏 ピアノリサイタル',
             date: '2026年3月13日 (金)',
             time: '開場:18:15 開演:19:00',
