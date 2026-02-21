@@ -15,20 +15,6 @@ class ConcertsScreen extends StatelessWidget {
         children: [
           MainVisual(title: 'コンサート情報', imageDirectory: 'concerts', height: 200),
           ConcertInfo(
-            title: 'シバリスク & 近藤奏 Live',
-            date: '2026年2月4日 (水)',
-            time: '開場:18:30 開演:19:00',
-            venue: '吉祥寺alaise',
-            address: '吉祥寺武蔵野市吉祥寺南町1-6-3 吉祥寺東急REIホテル地下1F',
-            flyerImagePaths: ['assets/flyers/20260204.jpg'],
-            programs: [],
-            ticketPrice: '全席 自由席 2,000円',
-            ticketInfo: 'Google Formsから予約 (当日会場にて支払い)',
-            ticketOptions: [
-              '[予約フォームはこちらから](https://docs.google.com/forms/d/e/1FAIpQLScbhYDBwNYgywEl8AVzW3neUulhiERcSE48Yz9d5Yd3D42slw/viewform)',
-            ],
-          ),
-          ConcertInfo(
             title: '近藤奏 ピアノリサイタル',
             date: '2026年3月13日 (金)',
             time: '開場:18:15 開演:19:00',
@@ -122,6 +108,20 @@ class ConcertsScreen extends StatelessWidget {
             ticketPrice: '全席 自由席 1,200円',
             ticketInfo: 'チケットのお買い求めはチケットぴあをご利用ください。',
             ticketOptions: ['チケットぴあ (P コード: 317675)'],
+          ),
+          ConcertInfo(
+            title: 'シバリスク & 近藤奏 Live',
+            date: '2026年2月4日 (水)',
+            time: '開場:18:30 開演:19:00',
+            venue: '吉祥寺alaise',
+            address: '吉祥寺武蔵野市吉祥寺南町1-6-3 吉祥寺東急REIホテル地下1F',
+            flyerImagePaths: ['assets/flyers/20260204.jpg'],
+            programs: [],
+            ticketPrice: '全席 自由席 2,000円',
+            ticketInfo: 'Google Formsから予約 (当日会場にて支払い)',
+            ticketOptions: [
+              '[予約フォームはこちらから](https://docs.google.com/forms/d/e/1FAIpQLScbhYDBwNYgywEl8AVzW3neUulhiERcSE48Yz9d5Yd3D42slw/viewform)',
+            ],
           ),
         ],
       ),
