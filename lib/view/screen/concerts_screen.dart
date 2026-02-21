@@ -76,7 +76,7 @@ class ConcertsScreen extends StatelessWidget {
           ),
           ConcertInfo(
             title: 'サンマルクカフェ モーニングピアノコンサート vol.47',
-            date: '2026年3月15日 (土)',
+            date: '2026年3月15日 (日)',
             time: '開演:10:30',
             venue: 'サンマルクカフェ静岡伊勢丹前店',
             address: '静岡市葵区呉服町1-30 札の辻クロスビル',
@@ -92,6 +92,18 @@ class ConcertsScreen extends StatelessWidget {
             ticketPrice: 'チケット不要',
             ticketInfo: '全席 自由席',
             ticketOptions: ['店頭にてワンドリンクご注文ください。'],
+          ),
+          ConcertInfo(
+            title: '創業100周年記念 第4回はあといん魚勝コンサート',
+            date: '2026年3月14日 (土), 2026年3月22日(土)',
+            time: '開場:11:00 開演:11:30',
+            venue: 'はあといん魚勝',
+            address: '静岡市葵区方羽町53',
+            flyerImagePaths: ['assets/flyers/20260314.png'],
+            programs: [],
+            ticketPrice: '5,000円 (食事･ワンドリンク付き)',
+            ticketInfo: 'チケットのお買い求めははあといん魚勝様にお問い合わせください。',
+            ticketOptions: ['TEL: 054-271-3777'],
           ),
           ConcertInfo(
             title: '近藤奏ピアノリサイタル E',
