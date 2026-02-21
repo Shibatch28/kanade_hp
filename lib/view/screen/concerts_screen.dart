@@ -65,8 +65,11 @@ class ConcertsScreen extends StatelessWidget {
               ProgramItem(composer: '近藤奏', pieces: ['やさしいせかいmodul (現代ピアノと電子機器と...を用いた全50分の作品)']),
             ],
             ticketPrice: '全席 自由席 1,200円',
-            ticketInfo: 'チケットのお買い求めはチケットぴあをご利用ください。',
-            ticketOptions: ['チケットぴあ (P コード: 317676)'],
+            ticketInfo: 'チケットのお買い求めはチケットぴあ、またはすみやグッディをご利用ください。',
+            ticketOptions: [
+              '[チケットぴあ (P コード: 317676)](https://t.pia.jp/pia/event/event.do?eventCd=2548828)',
+              'すみやグッディ 本店（呉服町）\nTEL : 054-253-6222\n【11:00~19:00/水曜日定休】',
+            ],
             additionalInfo: 'Guest: 松木絵里花 (Ba.)',
           ),
           const SizedBox(height: 30),
