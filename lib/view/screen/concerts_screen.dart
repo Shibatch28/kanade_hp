@@ -42,14 +42,17 @@ class ConcertsScreen extends StatelessWidget {
             programs: [
               ProgramItem(
                 composer: 'ベートーヴェン',
-                pieces: ['交響曲第7番イ長調 作品92 第1, 2楽章 (リスト編曲)', 'ピアノソナタ第 14番「月光」嬰ハ短調作品 27-2'],
+                pieces: ['交響曲第7番イ長調 作品92 第1, 2楽章 (リスト編曲)', 'ピアノソナタ第 14番「月光」嬰ハ短調 作品 27-2'],
               ),
-              ProgramItem(composer: 'ショパン', pieces: ['ワルツ・フォー・デビィ']),
+              ProgramItem(composer: 'ショパン', pieces: ['スケルツォ第1番 ロ短調 作品 20']),
+              ProgramItem(composer: 'ビル・エヴァンス', pieces: ['ワルツ･フォー･デビィ']),
               ProgramItem(composer: 'カプースチン', pieces: ['ブラジルの水彩画パラフレーズ']),
             ],
             ticketPrice: '全席 自由席 2,500円',
             ticketInfo: 'チケットのお買い求めはチケットぴあをご利用ください。',
-            ticketOptions: ['チケットぴあ（Pコード:311308）'],
+            ticketOptions: [
+              '[チケットぴあ（Pコード:311308）](https://t.pia.jp/pia/event/event.do?eventCd=2602608)',
+            ],
           ),
           ConcertInfo(
             title: '近藤奏ピアノリサイタル E',
