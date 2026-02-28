@@ -84,23 +84,32 @@ class _ConcertInfoState extends State<ConcertInfo> {
   Widget _buildMainContent(BuildContext context) {
     final isMobile = Responsive.isMobile(context);
 
-    if (isMobile) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          if (widget.flyerImagePaths.isNotEmpty) ...[
-            _buildFlyerImageSection(),
-            const SizedBox(height: 40),
-          ],
-          _buildEventDetails(context),
-          const SizedBox(height: 40),
-          _buildProgramSection(context),
-          const SizedBox(height: 40),
-          _buildTicketSection(context),
-          // 追加: 追加情報セクション
-          const SizedBox(height: 40),
-          _buildAdditionalInfoSection(context),
-        ],
+    if (isMobile || !widget.flyerImagePaths.isNotEmpty) {
+      return Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 600),
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                // 画像がない場合はここがスキップされ、
+                // 結果として「詳細」以降が中央に配置された領域内に描画される
+                if (widget.flyerImagePaths.isNotEmpty) ...[
+                  _buildFlyerImageSection(),
+                  const SizedBox(height: 40),
+                ],
+                _buildEventDetails(context),
+                const SizedBox(height: 40),
+                _buildProgramSection(context),
+                const SizedBox(height: 40),
+                _buildTicketSection(context),
+                const SizedBox(height: 40),
+                _buildAdditionalInfoSection(context),
+              ],
+            ),
+          ),
+        ),
       );
     }
 
