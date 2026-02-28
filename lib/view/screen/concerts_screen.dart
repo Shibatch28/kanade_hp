@@ -123,6 +123,18 @@ class ConcertsScreen extends StatelessWidget {
             ],
             additionalInfo: 'Guest: 松木絵里花 (Ba.)',
           ),
+          ConcertInfo(
+            title: '第16回 菩提樹院花祭り 法要・コンサート',
+            date: '2026年04月12日 (日)',
+            time: '開演: 13:00',
+            venue: '菩提樹院',
+            address: '〒420-0816 静岡県静岡市葵区沓谷 1344-4',
+            programs: [],
+            ticketPrice: '全席自由 1,000円(小学生以下無料)',
+            ticketInfo: '菩提樹院',
+            ticketOptions: ['054-261-3272'],
+            additionalInfo: '共演 Vo.武中千恵 Perc.長岡敬二郎 Gt.進藤洋樹',
+          ),
           const SizedBox(height: 30),
           const Text('過去のコンサート', style: TextStyle(fontSize: 48), textAlign: TextAlign.center),
           ConcertInfo(
