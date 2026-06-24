@@ -20,6 +20,10 @@ class ConcertsScreen extends StatelessWidget {
             time: '開場: 13:30 開演: 14:00',
             venue: '熱海 起雲閣 音楽サロン',
             address: '〒413-0022 静岡県熱海市昭和町 4-2',
+            flyerImagePaths: [
+              'assets/flyers/20260812a.png',
+              'assets/flyers/20260812b.png',
+            ],
             programs: [
               ProgramItem(composer: 'ショパン', pieces: ['ショパン', '作品名', 'バラード第 1 番ト短調 作品 23']),
               ProgramItem(
@@ -54,6 +58,10 @@ class ConcertsScreen extends StatelessWidget {
             time: '開場: 13:30 開演: 14:00',
             venue: 'カワイ浜松コンサートサロン ブリエ',
             address: '〒430-0926 静岡県浜松市中央区砂⼭町 355 番地の 4(ハマキョウレックス浜松駅南ビル 1F)',
+            flyerImagePaths: [
+              'assets/flyers/20260812a.png',
+              'assets/flyers/20260812b.png',
+            ],
             programs: [
               ProgramItem(composer: 'ショパン', pieces: ['ショパン', '作品名', 'バラード第 1 番ト短調 作品 23']),
               ProgramItem(
@@ -88,6 +96,10 @@ class ConcertsScreen extends StatelessWidget {
             time: '開場: 13:30 開演: 14:00',
             venue: '札の辻クロスホール',
             address: '〒420-0031 静岡市葵区呉服町 1 丁⽬ 30 札の辻クロス 6 階',
+            flyerImagePaths: [
+              'assets/flyers/20260812a.png',
+              'assets/flyers/20260812b.png',
+            ],
             programs: [
               ProgramItem(composer: 'ショパン', pieces: ['ショパン', '作品名', 'バラード第 1 番ト短調 作品 23']),
               ProgramItem(
