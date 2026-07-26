@@ -16,115 +16,46 @@ class ConcertsScreen extends StatelessWidget {
           MainVisual(title: 'コンサート情報', imageDirectory: 'concerts', height: 200),
           ConcertInfo(
             title: '近藤奏ピアノリサイタル',
-            date: '2026年08月22日 (土)',
+            date:
+                '【熱海】2026年08月22日 (土)\n【浜松】2026年08月29日 (土)\n【静岡】2026年09月05日 (土)',
             time: '開場: 13:30 開演: 14:00',
-            venue: '熱海 起雲閣 音楽サロン',
-            address: '〒413-0022 静岡県熱海市昭和町 4-2',
+            venue:
+                '【熱海】\n起雲閣 音楽サロン\n〒413-0022 静岡県熱海市昭和町 4-2\n【浜松】\nカワイ浜松コンサートサロン ブリエ\n〒430-0926 静岡県浜松市中央区砂⼭町 355 番地の 4\n【静岡】\n札の辻クロスホール\n〒420-0031 静岡市葵区呉服町 1 丁⽬ 30 札の辻クロス 6 階',
+            address: '',
             flyerImagePaths: [
               'assets/flyers/20260812a.png',
               'assets/flyers/20260812b.png',
             ],
             programs: [
-              ProgramItem(composer: 'ショパン', pieces: ['ショパン', '作品名', 'バラード第 1 番ト短調 作品 23']),
+              ProgramItem(
+      composer: 'ショパン', pieces: ['バラード第 1 番ト短調 作品 23']),
               ProgramItem(
                 composer: 'ベートーヴェン',
-                pieces: ['ベートーヴェン', '作品名', 'ピアノソナタ第 7 番 イ⻑調 作品 10-3'],
+                pieces: ['ピアノソナタ第 7 番 イ⻑調 作品 10-3'],
               ),
               ProgramItem(
                 composer: 'ブルグミュラー',
-                pieces: ['ブルグミュラー', '作品名', '25 の練習曲より「すなおな⼼」「アラベスク」「パストラル(牧歌)」'],
+                pieces: ['25 の練習曲より「すなおな⼼」「アラベスク」「パストラル(牧歌)」'],
               ),
               ProgramItem(
                 composer: 'ブラームス',
-                pieces: ['ブラームス', '作品名', '２つのラプソディより第 1 番 ロ短調 作品 79-1'],
+                pieces: ['２つのラプソディより第 1 番 ロ短調 作品 79-1'],
               ),
               ProgramItem(
                 composer: 'リスト',
-                pieces: ['リスト', '作品名', '村の居酒屋での踊り(メフィストワルツ第 1 番) S.514'],
+                pieces: ['村の居酒屋での踊り(メフィストワルツ第 1 番) S.514'],
               ),
-              ProgramItem(composer: 'ドビュッシー', pieces: ['ドビュッシー', '作品名', '喜びの島']),
+              ProgramItem(
+      composer: 'ドビュッシー', pieces: ['喜びの島']),
             ],
             ticketPrice: '一般 2,200円 U23 1,200円 ⾼校⽣以下無料\n未就学児童⼊場可\n⾞椅⼦席あり',
-            ticketInfo: 'チケットぴあ\nすみやグッディ本店',
+            ticketInfo:
+                'チケットぴあ\nすみやグッディ本店\nアクトシティ浜松チケットセンター(浜松公演のみ)\nHCF オンラインショップ(浜松公演のみ)',
             ticketOptions: [
               'チケットぴあ\nhttps://t.pia.jp/pia/artist/artists.do?artistsCd=O7040029',
               'すみやグッディ本店\nTEL：054-253-6222【11:00~19:00/⽔曜⽇定休】',
-            ],
-            additionalInfo: '高校生以下無料のチケットはすみやグッディでお買い求め頂くか、主催者に直接お問い合わせください。',
-          ),
-          ConcertInfo(
-            title: '近藤奏ピアノリサイタル',
-            date: '2026年08月29日 (土)',
-            time: '開場: 13:30 開演: 14:00',
-            venue: 'カワイ浜松コンサートサロン ブリエ',
-            address: '〒430-0926 静岡県浜松市中央区砂⼭町 355 番地の 4(ハマキョウレックス浜松駅南ビル 1F)',
-            flyerImagePaths: [
-              'assets/flyers/20260812a.png',
-              'assets/flyers/20260812b.png',
-            ],
-            programs: [
-              ProgramItem(composer: 'ショパン', pieces: ['ショパン', '作品名', 'バラード第 1 番ト短調 作品 23']),
-              ProgramItem(
-                composer: 'ベートーヴェン',
-                pieces: ['ベートーヴェン', '作品名', 'ピアノソナタ第 7 番 イ⻑調 作品 10-3'],
-              ),
-              ProgramItem(
-                composer: 'ブルグミュラー',
-                pieces: ['ブルグミュラー', '作品名', '25 の練習曲より「すなおな⼼」「アラベスク」「パストラル(牧歌)」'],
-              ),
-              ProgramItem(
-                composer: 'ブラームス',
-                pieces: ['ブラームス', '作品名', '２つのラプソディより第 1 番 ロ短調 作品 79-1'],
-              ),
-              ProgramItem(
-                composer: 'リスト',
-                pieces: ['リスト', '作品名', '村の居酒屋での踊り(メフィストワルツ第 1 番) S.514'],
-              ),
-              ProgramItem(composer: 'ドビュッシー', pieces: ['ドビュッシー', '作品名', '喜びの島']),
-            ],
-            ticketPrice: '一般 2,200円 U23 1,200円 ⾼校⽣以下無料\n未就学児童⼊場可\n⾞椅⼦席あり',
-            ticketInfo: 'チケットぴあ\nすみやグッディ本店\nアクトシティ浜松チケットセンター(浜松公演のみ)\nHCF オンラインショップ(浜松公演のみ)',
-            ticketOptions: [
-              'チケットぴあ\nhttps://t.pia.jp/pia/artist/artists.do?artistsCd=O7040029',
-              'すみやグッディ本店\nTEL：054-253-6222【11:00~19:00/⽔曜⽇定休】\nアクトシティ浜松チケットセンター(浜松公演のみ)\n（店頭販売のみ／10：00〜19：00）\nHCF オンラインショップ(浜松公演のみ)\nhttps://www.hcf.or.jp/shop/index.php',
-            ],
-            additionalInfo: '高校生以下無料のチケットはすみやグッディでお買い求め頂くか、主催者に直接お問い合わせください。',
-          ),
-          ConcertInfo(
-            title: '近藤奏ピアノリサイタル',
-            date: '2026年09月05日 (土)',
-            time: '開場: 13:30 開演: 14:00',
-            venue: '札の辻クロスホール',
-            address: '〒420-0031 静岡市葵区呉服町 1 丁⽬ 30 札の辻クロス 6 階',
-            flyerImagePaths: [
-              'assets/flyers/20260812a.png',
-              'assets/flyers/20260812b.png',
-            ],
-            programs: [
-              ProgramItem(composer: 'ショパン', pieces: ['ショパン', '作品名', 'バラード第 1 番ト短調 作品 23']),
-              ProgramItem(
-                composer: 'ベートーヴェン',
-                pieces: ['ベートーヴェン', '作品名', 'ピアノソナタ第 7 番 イ⻑調 作品 10-3'],
-              ),
-              ProgramItem(
-                composer: 'ブルグミュラー',
-                pieces: ['ブルグミュラー', '作品名', '25 の練習曲より「すなおな⼼」「アラベスク」「パストラル(牧歌)」'],
-              ),
-              ProgramItem(
-                composer: 'ブラームス',
-                pieces: ['ブラームス', '作品名', '２つのラプソディより第 1 番 ロ短調 作品 79-1'],
-              ),
-              ProgramItem(
-                composer: 'リスト',
-                pieces: ['リスト', '作品名', '村の居酒屋での踊り(メフィストワルツ第 1 番) S.514'],
-              ),
-              ProgramItem(composer: 'ドビュッシー', pieces: ['ドビュッシー', '作品名', '喜びの島']),
-            ],
-            ticketPrice: '一般 2,200円 U23 1,200円 ⾼校⽣以下無料\n未就学児童⼊場可\n⾞椅⼦席あり',
-            ticketInfo: 'チケットぴあ\nすみやグッディ本店',
-            ticketOptions: [
-              'チケットぴあ\nhttps://t.pia.jp/pia/artist/artists.do?artistsCd=O7040029',
-              'すみやグッディ本店\nTEL：054-253-6222【11:00~19:00/⽔曜⽇定休】',
+              'アクトシティ浜松チケットセンター(浜松公演のみ)\n（店頭販売のみ／10：00〜19：00）',
+              'HCF オンラインショップ(浜松公演のみ)\nhttps://www.hcf.or.jp/shop/index.php',
             ],
             additionalInfo: '高校生以下無料のチケットはすみやグッディでお買い求め頂くか、主催者に直接お問い合わせください。',
           ),
