@@ -216,7 +216,7 @@ class AboutScreen extends StatelessWidget {
           ),
 
           const ChronologyItem(
-            year: '2026',
+            year: '2027',
             month: '3',
             day: '31',
             title: '卒業予定。',
